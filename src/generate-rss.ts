@@ -21,7 +21,7 @@ const createBody = (descriptionMarkdown: string, references: SecurityAdvisoryRef
         : "";
     return md(descriptionMarkdown + referencesMD);
 };
-type Item = {
+export type Item = {
     url: string;
     title: string;
     createdAt: string;
