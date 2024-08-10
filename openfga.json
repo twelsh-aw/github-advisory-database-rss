@@ -1,7 +1,7 @@
 {
     "version": "https://jsonfeed.org/version/1",
     "title": "Security Advisories for github.com/openfga/openfga",
-    "home_page_url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+package%3Agithub.com/openfga/openfga",
+    "home_page_url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga",
     "feed_url": "https://twelsh-aw.github.io/github-advisory-database-rss/openfga.json",
     "description": "Security Advisories for github.com/openfga/openfga on GitHub",
     "items": [
