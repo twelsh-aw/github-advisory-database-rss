@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://twelsh-aw.github.io/github-advisory-database-rss/iam.rss</id>
+    <title>Security Advisories for IAM dependencies</title>
+    <updated>2024-08-10T13:44:28.438Z</updated>
+    <generator>github-advisory-database-rss</generator>
+    <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago"/>
+    <subtitle>Security Advisories for IAM dependencies on GitHub</subtitle>
+    <rights>github-advisory-database-rss</rights>
+    <category term="CRITICAL"/>
+    <category term="HIGH"/>
+    <category term="MODERATE"/>
+    <category term="LOW"/>
+    <entry>
+        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
+        <id>https://github.com/advisories/GHSA-3f6g-m4hr-59h8</id>
+        <link href="https://github.com/advisories/GHSA-3f6g-m4hr-59h8"/>
+        <updated>2024-08-09T22:23:29.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+<p>OpenFGA v1.5.7 and v1.5.8 are vulnerable to authorization bypass when calling Check API with a model that uses <code>but not</code> and <code>from</code> expressions and a userset. </p>
+<h2 id="fix">Fix</h2>
+<p>Downgrade to v1.5.6 as soon as possible. This downgrade is backward compatible.</p>
+<p>We are currently working on a fix which will be included in the next release.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8">https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8</a></li>
+<li><a href="https://github.com/advisories/GHSA-3f6g-m4hr-59h8">https://github.com/advisories/GHSA-3f6g-m4hr-59h8</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-3f6g-m4hr-59h8</uri>
+        </author>
+        <category label="severity" term="HIGH"/>
+        <published>2024-08-09T21:23:26.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/docker/docker] Authz zero length regression]]></title>
+        <id>https://github.com/advisories/GHSA-v23v-6jw2-98fq</id>
+        <link href="https://github.com/advisories/GHSA-v23v-6jw2-98fq"/>
+        <updated>2024-08-09T19:07:48.000Z</updated>
+        <content type="html"><![CDATA[<p>A security vulnerability has been detected in certain versions of Docker Engine, which could allow an attacker to bypass <a href="https://docs.docker.com/engine/extend/plugins_authorization/">authorization plugins (AuthZ)</a> under specific circumstances. The base likelihood of this being exploited is low. This advisory outlines the issue, identifies the affected versions, and provides remediation steps for impacted users.</p>
+<h3 id="impact">Impact</h3>
+<p>Using a specially-crafted API request, an Engine API client could make the daemon forward the request or response to an <a href="https://docs.docker.com/engine/extend/plugins_authorization/">authorization plugin</a> without the body. In certain circumstances, the authorization plugin may allow a request which it would have otherwise denied if the body had been forwarded to it.</p>
+<p>A security issue was discovered In 2018,  where an attacker could bypass AuthZ plugins using a specially crafted API request. This could lead to unauthorized actions, including privilege escalation. Although this issue was fixed in Docker Engine <a href="https://docs.docker.com/engine/release-notes/18.09/#security-fixes-1">v18.09.1</a> in January 2019, the fix was not carried forward to later major versions, resulting in a regression. Anyone who depends on authorization plugins that introspect the request and/or response body to make access control decisions is potentially impacted.</p>
+<p>Docker EE v19.03.x and all versions of Mirantis Container Runtime <strong>are not vulnerable.</strong></p>
+<h3 id="vulnerability-details">Vulnerability details</h3>
+<ul>
+<li><strong>AuthZ bypass and privilege escalation:</strong> An attacker could exploit a bypass using an API request with Content-Length set to 0, causing the Docker daemon to forward the request without the body to the AuthZ plugin, which might approve the request incorrectly.</li>
+<li><strong>Initial fix:</strong> The issue was fixed in Docker Engine <a href="https://docs.docker.com/engine/release-notes/18.09/#security-fixes-1">v18.09.1</a> January 2019..</li>
+<li><strong>Regression:</strong> The fix was not included in Docker Engine v19.03 or newer versions. This was identified in April 2024 and patches were released for the affected versions on July 23, 2024. The issue was assigned <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-41110">CVE-2024-41110</a>.</li>
+</ul>
+<h3 id="patches">Patches</h3>
+<ul>
+<li>docker-ce v27.1.1 containes patches to fix the vulnerability.</li>
+<li>Patches have also been merged into the master, 19.0, 20.0, 23.0, 24.0, 25.0, 26.0, and 26.1 release branches.</li>
+</ul>
+<h3 id="remediation-steps">Remediation steps</h3>
+<ul>
+<li>If you are running an affected version, update to the most recent patched version.</li>
+<li>Mitigation if unable to update immediately:<ul>
+<li>Avoid using AuthZ plugins.</li>
+<li>Restrict access to the Docker API to trusted parties, following the principle of least privilege.</li>
+</ul>
+</li>
+</ul>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb">https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb</a></li>
+<li><a href="https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1">https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1</a></li>
+<li><a href="https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin/">https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin/</a></li>
+</ul>
+<h3 id="references-1">References</h3>
+<ul>
+<li><a href="https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq">https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41110">https://nvd.nist.gov/vuln/detail/CVE-2024-41110</a></li>
+<li><a href="https://github.com/moby/moby/commit/411e817ddf710ff8e08fa193da80cb78af708191">https://github.com/moby/moby/commit/411e817ddf710ff8e08fa193da80cb78af708191</a></li>
+<li><a href="https://github.com/moby/moby/commit/42f40b1d6dd7562342f832b9cd2adf9e668eeb76">https://github.com/moby/moby/commit/42f40b1d6dd7562342f832b9cd2adf9e668eeb76</a></li>
+<li><a href="https://github.com/moby/moby/commit/65cc597cea28cdc25bea3b8a86384b4251872919">https://github.com/moby/moby/commit/65cc597cea28cdc25bea3b8a86384b4251872919</a></li>
+<li><a href="https://github.com/moby/moby/commit/852759a7df454cbf88db4e954c919becd48faa9b">https://github.com/moby/moby/commit/852759a7df454cbf88db4e954c919becd48faa9b</a></li>
+<li><a href="https://github.com/moby/moby/commit/a31260625655cff9ae226b51757915e275e304b0">https://github.com/moby/moby/commit/a31260625655cff9ae226b51757915e275e304b0</a></li>
+<li><a href="https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1">https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1</a></li>
+<li><a href="https://github.com/moby/moby/commit/ae160b4edddb72ef4bd71f66b975a1a1cc434f00">https://github.com/moby/moby/commit/ae160b4edddb72ef4bd71f66b975a1a1cc434f00</a></li>
+<li><a href="https://github.com/moby/moby/commit/ae2b3666c517c96cbc2adf1af5591a6b00d4ec0f">https://github.com/moby/moby/commit/ae2b3666c517c96cbc2adf1af5591a6b00d4ec0f</a></li>
+<li><a href="https://github.com/moby/moby/commit/cc13f952511154a2866bddbb7dddebfe9e83b801">https://github.com/moby/moby/commit/cc13f952511154a2866bddbb7dddebfe9e83b801</a></li>
+<li><a href="https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb">https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb</a></li>
+<li><a href="https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin">https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin</a></li>
+<li><a href="https://github.com/advisories/GHSA-v23v-6jw2-98fq">https://github.com/advisories/GHSA-v23v-6jw2-98fq</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-v23v-6jw2-98fq</uri>
+        </author>
+        <category label="severity" term="CRITICAL"/>
+        <published>2024-07-30T10:18:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/docker/docker] Authz zero length regression]]></title>
+        <id>https://github.com/advisories/GHSA-v23v-6jw2-98fq</id>
+        <link href="https://github.com/advisories/GHSA-v23v-6jw2-98fq"/>
+        <updated>2024-08-09T19:07:48.000Z</updated>
+        <content type="html"><![CDATA[<p>A security vulnerability has been detected in certain versions of Docker Engine, which could allow an attacker to bypass <a href="https://docs.docker.com/engine/extend/plugins_authorization/">authorization plugins (AuthZ)</a> under specific circumstances. The base likelihood of this being exploited is low. This advisory outlines the issue, identifies the affected versions, and provides remediation steps for impacted users.</p>
+<h3 id="impact">Impact</h3>
+<p>Using a specially-crafted API request, an Engine API client could make the daemon forward the request or response to an <a href="https://docs.docker.com/engine/extend/plugins_authorization/">authorization plugin</a> without the body. In certain circumstances, the authorization plugin may allow a request which it would have otherwise denied if the body had been forwarded to it.</p>
+<p>A security issue was discovered In 2018,  where an attacker could bypass AuthZ plugins using a specially crafted API request. This could lead to unauthorized actions, including privilege escalation. Although this issue was fixed in Docker Engine <a href="https://docs.docker.com/engine/release-notes/18.09/#security-fixes-1">v18.09.1</a> in January 2019, the fix was not carried forward to later major versions, resulting in a regression. Anyone who depends on authorization plugins that introspect the request and/or response body to make access control decisions is potentially impacted.</p>
+<p>Docker EE v19.03.x and all versions of Mirantis Container Runtime <strong>are not vulnerable.</strong></p>
+<h3 id="vulnerability-details">Vulnerability details</h3>
+<ul>
+<li><strong>AuthZ bypass and privilege escalation:</strong> An attacker could exploit a bypass using an API request with Content-Length set to 0, causing the Docker daemon to forward the request without the body to the AuthZ plugin, which might approve the request incorrectly.</li>
+<li><strong>Initial fix:</strong> The issue was fixed in Docker Engine <a href="https://docs.docker.com/engine/release-notes/18.09/#security-fixes-1">v18.09.1</a> January 2019..</li>
+<li><strong>Regression:</strong> The fix was not included in Docker Engine v19.03 or newer versions. This was identified in April 2024 and patches were released for the affected versions on July 23, 2024. The issue was assigned <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-41110">CVE-2024-41110</a>.</li>
+</ul>
+<h3 id="patches">Patches</h3>
+<ul>
+<li>docker-ce v27.1.1 containes patches to fix the vulnerability.</li>
+<li>Patches have also been merged into the master, 19.0, 20.0, 23.0, 24.0, 25.0, 26.0, and 26.1 release branches.</li>
+</ul>
+<h3 id="remediation-steps">Remediation steps</h3>
+<ul>
+<li>If you are running an affected version, update to the most recent patched version.</li>
+<li>Mitigation if unable to update immediately:<ul>
+<li>Avoid using AuthZ plugins.</li>
+<li>Restrict access to the Docker API to trusted parties, following the principle of least privilege.</li>
+</ul>
+</li>
+</ul>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb">https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb</a></li>
+<li><a href="https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1">https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1</a></li>
+<li><a href="https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin/">https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin/</a></li>
+</ul>
+<h3 id="references-1">References</h3>
+<ul>
+<li><a href="https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq">https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41110">https://nvd.nist.gov/vuln/detail/CVE-2024-41110</a></li>
+<li><a href="https://github.com/moby/moby/commit/411e817ddf710ff8e08fa193da80cb78af708191">https://github.com/moby/moby/commit/411e817ddf710ff8e08fa193da80cb78af708191</a></li>
+<li><a href="https://github.com/moby/moby/commit/42f40b1d6dd7562342f832b9cd2adf9e668eeb76">https://github.com/moby/moby/commit/42f40b1d6dd7562342f832b9cd2adf9e668eeb76</a></li>
+<li><a href="https://github.com/moby/moby/commit/65cc597cea28cdc25bea3b8a86384b4251872919">https://github.com/moby/moby/commit/65cc597cea28cdc25bea3b8a86384b4251872919</a></li>
+<li><a href="https://github.com/moby/moby/commit/852759a7df454cbf88db4e954c919becd48faa9b">https://github.com/moby/moby/commit/852759a7df454cbf88db4e954c919becd48faa9b</a></li>
+<li><a href="https://github.com/moby/moby/commit/a31260625655cff9ae226b51757915e275e304b0">https://github.com/moby/moby/commit/a31260625655cff9ae226b51757915e275e304b0</a></li>
+<li><a href="https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1">https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1</a></li>
+<li><a href="https://github.com/moby/moby/commit/ae160b4edddb72ef4bd71f66b975a1a1cc434f00">https://github.com/moby/moby/commit/ae160b4edddb72ef4bd71f66b975a1a1cc434f00</a></li>
+<li><a href="https://github.com/moby/moby/commit/ae2b3666c517c96cbc2adf1af5591a6b00d4ec0f">https://github.com/moby/moby/commit/ae2b3666c517c96cbc2adf1af5591a6b00d4ec0f</a></li>
+<li><a href="https://github.com/moby/moby/commit/cc13f952511154a2866bddbb7dddebfe9e83b801">https://github.com/moby/moby/commit/cc13f952511154a2866bddbb7dddebfe9e83b801</a></li>
+<li><a href="https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb">https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb</a></li>
+<li><a href="https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin">https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin</a></li>
+<li><a href="https://github.com/advisories/GHSA-v23v-6jw2-98fq">https://github.com/advisories/GHSA-v23v-6jw2-98fq</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-v23v-6jw2-98fq</uri>
+        </author>
+        <category label="severity" term="CRITICAL"/>
+        <published>2024-07-30T10:18:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/docker/docker] Authz zero length regression]]></title>
+        <id>https://github.com/advisories/GHSA-v23v-6jw2-98fq</id>
+        <link href="https://github.com/advisories/GHSA-v23v-6jw2-98fq"/>
+        <updated>2024-08-09T19:07:48.000Z</updated>
+        <content type="html"><![CDATA[<p>A security vulnerability has been detected in certain versions of Docker Engine, which could allow an attacker to bypass <a href="https://docs.docker.com/engine/extend/plugins_authorization/">authorization plugins (AuthZ)</a> under specific circumstances. The base likelihood of this being exploited is low. This advisory outlines the issue, identifies the affected versions, and provides remediation steps for impacted users.</p>
+<h3 id="impact">Impact</h3>
+<p>Using a specially-crafted API request, an Engine API client could make the daemon forward the request or response to an <a href="https://docs.docker.com/engine/extend/plugins_authorization/">authorization plugin</a> without the body. In certain circumstances, the authorization plugin may allow a request which it would have otherwise denied if the body had been forwarded to it.</p>
+<p>A security issue was discovered In 2018,  where an attacker could bypass AuthZ plugins using a specially crafted API request. This could lead to unauthorized actions, including privilege escalation. Although this issue was fixed in Docker Engine <a href="https://docs.docker.com/engine/release-notes/18.09/#security-fixes-1">v18.09.1</a> in January 2019, the fix was not carried forward to later major versions, resulting in a regression. Anyone who depends on authorization plugins that introspect the request and/or response body to make access control decisions is potentially impacted.</p>
+<p>Docker EE v19.03.x and all versions of Mirantis Container Runtime <strong>are not vulnerable.</strong></p>
+<h3 id="vulnerability-details">Vulnerability details</h3>
+<ul>
+<li><strong>AuthZ bypass and privilege escalation:</strong> An attacker could exploit a bypass using an API request with Content-Length set to 0, causing the Docker daemon to forward the request without the body to the AuthZ plugin, which might approve the request incorrectly.</li>
+<li><strong>Initial fix:</strong> The issue was fixed in Docker Engine <a href="https://docs.docker.com/engine/release-notes/18.09/#security-fixes-1">v18.09.1</a> January 2019..</li>
+<li><strong>Regression:</strong> The fix was not included in Docker Engine v19.03 or newer versions. This was identified in April 2024 and patches were released for the affected versions on July 23, 2024. The issue was assigned <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-41110">CVE-2024-41110</a>.</li>
+</ul>
+<h3 id="patches">Patches</h3>
+<ul>
+<li>docker-ce v27.1.1 containes patches to fix the vulnerability.</li>
+<li>Patches have also been merged into the master, 19.0, 20.0, 23.0, 24.0, 25.0, 26.0, and 26.1 release branches.</li>
+</ul>
+<h3 id="remediation-steps">Remediation steps</h3>
+<ul>
+<li>If you are running an affected version, update to the most recent patched version.</li>
+<li>Mitigation if unable to update immediately:<ul>
+<li>Avoid using AuthZ plugins.</li>
+<li>Restrict access to the Docker API to trusted parties, following the principle of least privilege.</li>
+</ul>
+</li>
+</ul>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb">https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb</a></li>
+<li><a href="https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1">https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1</a></li>
+<li><a href="https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin/">https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin/</a></li>
+</ul>
+<h3 id="references-1">References</h3>
+<ul>
+<li><a href="https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq">https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41110">https://nvd.nist.gov/vuln/detail/CVE-2024-41110</a></li>
+<li><a href="https://github.com/moby/moby/commit/411e817ddf710ff8e08fa193da80cb78af708191">https://github.com/moby/moby/commit/411e817ddf710ff8e08fa193da80cb78af708191</a></li>
+<li><a href="https://github.com/moby/moby/commit/42f40b1d6dd7562342f832b9cd2adf9e668eeb76">https://github.com/moby/moby/commit/42f40b1d6dd7562342f832b9cd2adf9e668eeb76</a></li>
+<li><a href="https://github.com/moby/moby/commit/65cc597cea28cdc25bea3b8a86384b4251872919">https://github.com/moby/moby/commit/65cc597cea28cdc25bea3b8a86384b4251872919</a></li>
+<li><a href="https://github.com/moby/moby/commit/852759a7df454cbf88db4e954c919becd48faa9b">https://github.com/moby/moby/commit/852759a7df454cbf88db4e954c919becd48faa9b</a></li>
+<li><a href="https://github.com/moby/moby/commit/a31260625655cff9ae226b51757915e275e304b0">https://github.com/moby/moby/commit/a31260625655cff9ae226b51757915e275e304b0</a></li>
+<li><a href="https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1">https://github.com/moby/moby/commit/a79fabbfe84117696a19671f4aa88b82d0f64fc1</a></li>
+<li><a href="https://github.com/moby/moby/commit/ae160b4edddb72ef4bd71f66b975a1a1cc434f00">https://github.com/moby/moby/commit/ae160b4edddb72ef4bd71f66b975a1a1cc434f00</a></li>
+<li><a href="https://github.com/moby/moby/commit/ae2b3666c517c96cbc2adf1af5591a6b00d4ec0f">https://github.com/moby/moby/commit/ae2b3666c517c96cbc2adf1af5591a6b00d4ec0f</a></li>
+<li><a href="https://github.com/moby/moby/commit/cc13f952511154a2866bddbb7dddebfe9e83b801">https://github.com/moby/moby/commit/cc13f952511154a2866bddbb7dddebfe9e83b801</a></li>
+<li><a href="https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb">https://github.com/moby/moby/commit/fc274cd2ff4cf3b48c91697fb327dd1fb95588fb</a></li>
+<li><a href="https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin">https://www.docker.com/blog/docker-security-advisory-docker-engine-authz-plugin</a></li>
+<li><a href="https://github.com/advisories/GHSA-v23v-6jw2-98fq">https://github.com/advisories/GHSA-v23v-6jw2-98fq</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-v23v-6jw2-98fq</uri>
+        </author>
+        <category label="severity" term="CRITICAL"/>
+        <published>2024-07-30T10:18:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/CosmWasm/wasmvm] Gas mispricing in cosmwasm-vm]]></title>
+        <id>https://github.com/advisories/GHSA-rg2q-2jh9-447q</id>
+        <link href="https://github.com/advisories/GHSA-rg2q-2jh9-447q"/>
+        <updated>2024-08-08T17:03:07.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>Component:</strong> wasmvm
+<strong>Criticality:</strong> Medium (<a href="https://github.com/interchainio/security/blob/main/resources/CLASSIFICATION_MATRIX.md">ACMv1</a>: I:Moderate; L:Likely)
+<strong>Patched versions:</strong> wasmvm 1.5.4, 2.0.3, 2.1.2</p>
+<p>Some Wasm operations take significantly more gas than our benchmarks indicated. This can lead to missing the <a href="https://github.com/CosmWasm/cosmwasm/blob/e50490c4199a234200a497219b27f071c3409f58/docs/GAS.md#cosmwasm-gas-pricing">gas target</a> we defined by a factor of ~10x. This means a malicious contract could take 10 times as much time to execute as expected, which can be used to temporarily DoS a chain.</p>
+<p>See <a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md">CWA-2024-004</a> for more details.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/CosmWasm/wasmvm/security/advisories/GHSA-rg2q-2jh9-447q">https://github.com/CosmWasm/wasmvm/security/advisories/GHSA-rg2q-2jh9-447q</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/5bef1c588933bd60a04bb70099150cf84b69e144">https://github.com/CosmWasm/cosmwasm/commit/5bef1c588933bd60a04bb70099150cf84b69e144</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/9b4d6d03772b75d500a7d3c972d0d8ba6d085c06">https://github.com/CosmWasm/cosmwasm/commit/9b4d6d03772b75d500a7d3c972d0d8ba6d085c06</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/c1313afeb261e17b1c8cf6a1eacee1da0dac42ae">https://github.com/CosmWasm/cosmwasm/commit/c1313afeb261e17b1c8cf6a1eacee1da0dac42ae</a></li>
+<li><a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md">https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md</a></li>
+<li><a href="https://rustsec.org/advisories/RUSTSEC-2024-0361.html">https://rustsec.org/advisories/RUSTSEC-2024-0361.html</a></li>
+<li><a href="https://github.com/advisories/GHSA-rg2q-2jh9-447q">https://github.com/advisories/GHSA-rg2q-2jh9-447q</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-rg2q-2jh9-447q</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-08T16:30:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/CosmWasm/wasmvm/v2] Gas mispricing in cosmwasm-vm]]></title>
+        <id>https://github.com/advisories/GHSA-rg2q-2jh9-447q</id>
+        <link href="https://github.com/advisories/GHSA-rg2q-2jh9-447q"/>
+        <updated>2024-08-08T17:03:07.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>Component:</strong> wasmvm
+<strong>Criticality:</strong> Medium (<a href="https://github.com/interchainio/security/blob/main/resources/CLASSIFICATION_MATRIX.md">ACMv1</a>: I:Moderate; L:Likely)
+<strong>Patched versions:</strong> wasmvm 1.5.4, 2.0.3, 2.1.2</p>
+<p>Some Wasm operations take significantly more gas than our benchmarks indicated. This can lead to missing the <a href="https://github.com/CosmWasm/cosmwasm/blob/e50490c4199a234200a497219b27f071c3409f58/docs/GAS.md#cosmwasm-gas-pricing">gas target</a> we defined by a factor of ~10x. This means a malicious contract could take 10 times as much time to execute as expected, which can be used to temporarily DoS a chain.</p>
+<p>See <a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md">CWA-2024-004</a> for more details.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/CosmWasm/wasmvm/security/advisories/GHSA-rg2q-2jh9-447q">https://github.com/CosmWasm/wasmvm/security/advisories/GHSA-rg2q-2jh9-447q</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/5bef1c588933bd60a04bb70099150cf84b69e144">https://github.com/CosmWasm/cosmwasm/commit/5bef1c588933bd60a04bb70099150cf84b69e144</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/9b4d6d03772b75d500a7d3c972d0d8ba6d085c06">https://github.com/CosmWasm/cosmwasm/commit/9b4d6d03772b75d500a7d3c972d0d8ba6d085c06</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/c1313afeb261e17b1c8cf6a1eacee1da0dac42ae">https://github.com/CosmWasm/cosmwasm/commit/c1313afeb261e17b1c8cf6a1eacee1da0dac42ae</a></li>
+<li><a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md">https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md</a></li>
+<li><a href="https://rustsec.org/advisories/RUSTSEC-2024-0361.html">https://rustsec.org/advisories/RUSTSEC-2024-0361.html</a></li>
+<li><a href="https://github.com/advisories/GHSA-rg2q-2jh9-447q">https://github.com/advisories/GHSA-rg2q-2jh9-447q</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-rg2q-2jh9-447q</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-08T16:30:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/CosmWasm/wasmvm/v2] Gas mispricing in cosmwasm-vm]]></title>
+        <id>https://github.com/advisories/GHSA-rg2q-2jh9-447q</id>
+        <link href="https://github.com/advisories/GHSA-rg2q-2jh9-447q"/>
+        <updated>2024-08-08T17:03:07.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>Component:</strong> wasmvm
+<strong>Criticality:</strong> Medium (<a href="https://github.com/interchainio/security/blob/main/resources/CLASSIFICATION_MATRIX.md">ACMv1</a>: I:Moderate; L:Likely)
+<strong>Patched versions:</strong> wasmvm 1.5.4, 2.0.3, 2.1.2</p>
+<p>Some Wasm operations take significantly more gas than our benchmarks indicated. This can lead to missing the <a href="https://github.com/CosmWasm/cosmwasm/blob/e50490c4199a234200a497219b27f071c3409f58/docs/GAS.md#cosmwasm-gas-pricing">gas target</a> we defined by a factor of ~10x. This means a malicious contract could take 10 times as much time to execute as expected, which can be used to temporarily DoS a chain.</p>
+<p>See <a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md">CWA-2024-004</a> for more details.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/CosmWasm/wasmvm/security/advisories/GHSA-rg2q-2jh9-447q">https://github.com/CosmWasm/wasmvm/security/advisories/GHSA-rg2q-2jh9-447q</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/5bef1c588933bd60a04bb70099150cf84b69e144">https://github.com/CosmWasm/cosmwasm/commit/5bef1c588933bd60a04bb70099150cf84b69e144</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/9b4d6d03772b75d500a7d3c972d0d8ba6d085c06">https://github.com/CosmWasm/cosmwasm/commit/9b4d6d03772b75d500a7d3c972d0d8ba6d085c06</a></li>
+<li><a href="https://github.com/CosmWasm/cosmwasm/commit/c1313afeb261e17b1c8cf6a1eacee1da0dac42ae">https://github.com/CosmWasm/cosmwasm/commit/c1313afeb261e17b1c8cf6a1eacee1da0dac42ae</a></li>
+<li><a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md">https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-004.md</a></li>
+<li><a href="https://rustsec.org/advisories/RUSTSEC-2024-0361.html">https://rustsec.org/advisories/RUSTSEC-2024-0361.html</a></li>
+<li><a href="https://github.com/advisories/GHSA-rg2q-2jh9-447q">https://github.com/advisories/GHSA-rg2q-2jh9-447q</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-rg2q-2jh9-447q</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-08T16:30:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/CosmWasm/wasmd] CosmWasm wasmd has large address count in ValidateBasic]]></title>
+        <id>https://github.com/advisories/GHSA-m3rh-cvr5-x6q4</id>
+        <link href="https://github.com/advisories/GHSA-m3rh-cvr5-x6q4"/>
+        <updated>2024-08-08T16:36:28.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>Component:</strong> wasmd
+<strong>Criticality:</strong> Low (<a href="https://github.com/interchainio/security/blob/main/resources/CLASSIFICATION_MATRIX.md">ACMv1</a>: I:Moderate; L:Unlikely)
+<strong>Patched versions:</strong> wasmd 0.52.0</p>
+<p>In multiple wasmd message types it was possible to add a large number of addresses which might lead to unexpected resource consumption in ValidateBasic.</p>
+<p>See <a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-003.md">CWA-2024-003</a> for more details.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/CosmWasm/wasmd/security/advisories/GHSA-m3rh-cvr5-x6q4">https://github.com/CosmWasm/wasmd/security/advisories/GHSA-m3rh-cvr5-x6q4</a></li>
+<li><a href="https://github.com/CosmWasm/wasmd/commit/76c0c061c9cb6b142163883e46c26d99384dc443">https://github.com/CosmWasm/wasmd/commit/76c0c061c9cb6b142163883e46c26d99384dc443</a></li>
+<li><a href="https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-003.md">https://github.com/CosmWasm/advisories/blob/main/CWAs/CWA-2024-003.md</a></li>
+<li><a href="https://github.com/advisories/GHSA-m3rh-cvr5-x6q4">https://github.com/advisories/GHSA-m3rh-cvr5-x6q4</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-m3rh-cvr5-x6q4</uri>
+        </author>
+        <category label="severity" term="LOW"/>
+        <published>2024-08-08T16:36:26.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/containers/podman/v4] Podman vulnerable to memory-based denial of service]]></title>
+        <id>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</id>
+        <link href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p"/>
+        <updated>2024-08-07T19:39:42.000Z</updated>
+        <content type="html"><![CDATA[<p>A flaw was found in Podman. This issue may allow an attacker to create a specially crafted container that, when configured to share the same IPC with at least one other container, can create a large number of IPC resources in /dev/shm. The malicious container will continue to exhaust resources until it is out-of-memory (OOM) killed. While the malicious container's cgroup will be removed, the IPC resources it created are not. Those resources are tied to the IPC namespace that will not be removed until all containers using it are stopped, and one non-malicious container is holding the namespace open. The malicious container is restarted, either automatically or by attacker control, repeating the process and increasing the amount of memory consumed. With a container configured to restart always, such as <code>podman run --restart=always</code>, this can result in a memory-based denial of service of the system.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3056">https://nvd.nist.gov/vuln/detail/CVE-2024-3056</a></li>
+<li><a href="https://access.redhat.com/security/cve/CVE-2024-3056">https://access.redhat.com/security/cve/CVE-2024-3056</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=2270717">https://bugzilla.redhat.com/show_bug.cgi?id=2270717</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3042">https://pkg.go.dev/vuln/GO-2024-3042</a></li>
+<li><a href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p">https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-02T21:31:34.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/containers/podman/v3] Podman vulnerable to memory-based denial of service]]></title>
+        <id>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</id>
+        <link href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p"/>
+        <updated>2024-08-07T19:39:42.000Z</updated>
+        <content type="html"><![CDATA[<p>A flaw was found in Podman. This issue may allow an attacker to create a specially crafted container that, when configured to share the same IPC with at least one other container, can create a large number of IPC resources in /dev/shm. The malicious container will continue to exhaust resources until it is out-of-memory (OOM) killed. While the malicious container's cgroup will be removed, the IPC resources it created are not. Those resources are tied to the IPC namespace that will not be removed until all containers using it are stopped, and one non-malicious container is holding the namespace open. The malicious container is restarted, either automatically or by attacker control, repeating the process and increasing the amount of memory consumed. With a container configured to restart always, such as <code>podman run --restart=always</code>, this can result in a memory-based denial of service of the system.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3056">https://nvd.nist.gov/vuln/detail/CVE-2024-3056</a></li>
+<li><a href="https://access.redhat.com/security/cve/CVE-2024-3056">https://access.redhat.com/security/cve/CVE-2024-3056</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=2270717">https://bugzilla.redhat.com/show_bug.cgi?id=2270717</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3042">https://pkg.go.dev/vuln/GO-2024-3042</a></li>
+<li><a href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p">https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-02T21:31:34.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/containers/podman/v2] Podman vulnerable to memory-based denial of service]]></title>
+        <id>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</id>
+        <link href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p"/>
+        <updated>2024-08-07T19:39:42.000Z</updated>
+        <content type="html"><![CDATA[<p>A flaw was found in Podman. This issue may allow an attacker to create a specially crafted container that, when configured to share the same IPC with at least one other container, can create a large number of IPC resources in /dev/shm. The malicious container will continue to exhaust resources until it is out-of-memory (OOM) killed. While the malicious container's cgroup will be removed, the IPC resources it created are not. Those resources are tied to the IPC namespace that will not be removed until all containers using it are stopped, and one non-malicious container is holding the namespace open. The malicious container is restarted, either automatically or by attacker control, repeating the process and increasing the amount of memory consumed. With a container configured to restart always, such as <code>podman run --restart=always</code>, this can result in a memory-based denial of service of the system.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3056">https://nvd.nist.gov/vuln/detail/CVE-2024-3056</a></li>
+<li><a href="https://access.redhat.com/security/cve/CVE-2024-3056">https://access.redhat.com/security/cve/CVE-2024-3056</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=2270717">https://bugzilla.redhat.com/show_bug.cgi?id=2270717</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3042">https://pkg.go.dev/vuln/GO-2024-3042</a></li>
+<li><a href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p">https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-02T21:31:34.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/containers/podman] Podman vulnerable to memory-based denial of service]]></title>
+        <id>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</id>
+        <link href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p"/>
+        <updated>2024-08-07T19:39:42.000Z</updated>
+        <content type="html"><![CDATA[<p>A flaw was found in Podman. This issue may allow an attacker to create a specially crafted container that, when configured to share the same IPC with at least one other container, can create a large number of IPC resources in /dev/shm. The malicious container will continue to exhaust resources until it is out-of-memory (OOM) killed. While the malicious container's cgroup will be removed, the IPC resources it created are not. Those resources are tied to the IPC namespace that will not be removed until all containers using it are stopped, and one non-malicious container is holding the namespace open. The malicious container is restarted, either automatically or by attacker control, repeating the process and increasing the amount of memory consumed. With a container configured to restart always, such as <code>podman run --restart=always</code>, this can result in a memory-based denial of service of the system.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3056">https://nvd.nist.gov/vuln/detail/CVE-2024-3056</a></li>
+<li><a href="https://access.redhat.com/security/cve/CVE-2024-3056">https://access.redhat.com/security/cve/CVE-2024-3056</a></li>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=2270717">https://bugzilla.redhat.com/show_bug.cgi?id=2270717</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3042">https://pkg.go.dev/vuln/GO-2024-3042</a></li>
+<li><a href="https://github.com/advisories/GHSA-rpcc-p8xm-rc6p">https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-rpcc-p8xm-rc6p</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-02T21:31:34.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[volcano.sh/volcano] Volcano has insecure permissions]]></title>
+        <id>https://github.com/advisories/GHSA-5g3x-8g2v-r8x8</id>
+        <link href="https://github.com/advisories/GHSA-5g3x-8g2v-r8x8"/>
+        <updated>2024-08-07T15:09:36.000Z</updated>
+        <content type="html"><![CDATA[<p>Insecure permissions in volcano v1.8.2 allows attackers to access sensitive data and escalate privileges by obtaining the service account's token.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-36533">https://nvd.nist.gov/vuln/detail/CVE-2024-36533</a></li>
+<li><a href="https://gist.github.com/HouqiyuA/a0e05a26ecc80bd970ac4649faecc930">https://gist.github.com/HouqiyuA/a0e05a26ecc80bd970ac4649faecc930</a></li>
+<li><a href="https://github.com/volcano-sh/volcano/issues/3446">https://github.com/volcano-sh/volcano/issues/3446</a></li>
+<li><a href="https://github.com/volcano-sh/volcano/pull/3449">https://github.com/volcano-sh/volcano/pull/3449</a></li>
+<li><a href="https://github.com/volcano-sh/volcano/commit/55963f71c76cb85cea1cdb9582ea7d58cfbedcf8">https://github.com/volcano-sh/volcano/commit/55963f71c76cb85cea1cdb9582ea7d58cfbedcf8</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3034">https://pkg.go.dev/vuln/GO-2024-3034</a></li>
+<li><a href="https://github.com/advisories/GHSA-5g3x-8g2v-r8x8">https://github.com/advisories/GHSA-5g3x-8g2v-r8x8</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-5g3x-8g2v-r8x8</uri>
+        </author>
+        <category label="severity" term="CRITICAL"/>
+        <published>2024-07-24T21:31:30.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/argoproj/argo-cd/v2] The Argo CD web terminal session does not handle the revocation of user permissions properly]]></title>
+        <id>https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</id>
+        <link href="https://github.com/advisories/GHSA-v8wx-v5jq-qhhw"/>
+        <updated>2024-08-07T14:24:25.000Z</updated>
+        <content type="html"><![CDATA[<p>Argo CD v2.11.3 and before, discovering that even if the user's <code>p, role:myrole, exec, create, */*, allow</code> permissions are revoked, the user can still send any Websocket message, which allows the user to view sensitive information. Even though they shouldn't have such access.</p>
+<h2 id="description">Description</h2>
+<p>Argo CD has a Web-based terminal that allows you to get a shell inside a running pod, just like you would with kubectl exec. However, when the administrator enables this function and grants permission to the user <code>p, role:myrole, exec, create, */*, allow</code>, even if the user revokes this permission, the user can still perform operations in the container, as long as the user keeps the terminal view open for a long time. CVE-2023-40025 Although the token expiration and revocation of the user are fixed, however, the fix does not address the situation of revocation of only user <code>p, role:myrole, exec, create, */*, allow</code> permissions, which may still lead to the leakage of sensitive information.</p>
+<h3 id="patches">Patches</h3>
+<p>A patch for this vulnerability has been released in the following Argo CD versions:</p>
+<p>v2.11.7
+v2.10.16
+v2.9.21</p>
+<h3 id="for-more-information">For more information</h3>
+<p>If you have any questions or comments about this advisory:</p>
+<p>Open an issue in <a href="https://github.com/argoproj/argo-cd/issues">the Argo CD issue tracker</a> or <a href="https://github.com/argoproj/argo-cd/discussions">discussions</a>
+Join us on <a href="https://argoproj.github.io/community/join-slack">Slack</a> in channel #argo-cd</p>
+<h3 id="credits">Credits</h3>
+<p>This vulnerability was found &amp; reported by 
+Shengjie Li, Huazhong University of Science and Technology
+Zhi Li, Huazhong University of Science and Technology
+Weijie Liu, Nankai University</p>
+<p>The Argo team would like to thank these contributors for their responsible disclosure and constructive communications during the resolve of this issue</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/security/advisories/GHSA-v8wx-v5jq-qhhw">https://github.com/argoproj/argo-cd/security/advisories/GHSA-v8wx-v5jq-qhhw</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41666">https://nvd.nist.gov/vuln/detail/CVE-2024-41666</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/05edb2a9ca48f0f10608c1b49fbb0cf7164f6476">https://github.com/argoproj/argo-cd/commit/05edb2a9ca48f0f10608c1b49fbb0cf7164f6476</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/e96f32d233504101ddac028a5bf8117433d333d6">https://github.com/argoproj/argo-cd/commit/e96f32d233504101ddac028a5bf8117433d333d6</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/ef535230d8bd8ad7b18aab1ea1063e9751d348c4">https://github.com/argoproj/argo-cd/commit/ef535230d8bd8ad7b18aab1ea1063e9751d348c4</a></li>
+<li><a href="https://drive.google.com/file/d/1Fynj5Sho8Lf8CETqsNXZyPKlTDdmgJuN/view?usp=sharing">https://drive.google.com/file/d/1Fynj5Sho8Lf8CETqsNXZyPKlTDdmgJuN/view?usp=sharing</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3006">https://pkg.go.dev/vuln/GO-2024-3006</a></li>
+<li><a href="https://github.com/advisories/GHSA-v8wx-v5jq-qhhw">https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-07-24T20:54:02.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/argoproj/argo-cd/v2] The Argo CD web terminal session does not handle the revocation of user permissions properly]]></title>
+        <id>https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</id>
+        <link href="https://github.com/advisories/GHSA-v8wx-v5jq-qhhw"/>
+        <updated>2024-08-07T14:24:25.000Z</updated>
+        <content type="html"><![CDATA[<p>Argo CD v2.11.3 and before, discovering that even if the user's <code>p, role:myrole, exec, create, */*, allow</code> permissions are revoked, the user can still send any Websocket message, which allows the user to view sensitive information. Even though they shouldn't have such access.</p>
+<h2 id="description">Description</h2>
+<p>Argo CD has a Web-based terminal that allows you to get a shell inside a running pod, just like you would with kubectl exec. However, when the administrator enables this function and grants permission to the user <code>p, role:myrole, exec, create, */*, allow</code>, even if the user revokes this permission, the user can still perform operations in the container, as long as the user keeps the terminal view open for a long time. CVE-2023-40025 Although the token expiration and revocation of the user are fixed, however, the fix does not address the situation of revocation of only user <code>p, role:myrole, exec, create, */*, allow</code> permissions, which may still lead to the leakage of sensitive information.</p>
+<h3 id="patches">Patches</h3>
+<p>A patch for this vulnerability has been released in the following Argo CD versions:</p>
+<p>v2.11.7
+v2.10.16
+v2.9.21</p>
+<h3 id="for-more-information">For more information</h3>
+<p>If you have any questions or comments about this advisory:</p>
+<p>Open an issue in <a href="https://github.com/argoproj/argo-cd/issues">the Argo CD issue tracker</a> or <a href="https://github.com/argoproj/argo-cd/discussions">discussions</a>
+Join us on <a href="https://argoproj.github.io/community/join-slack">Slack</a> in channel #argo-cd</p>
+<h3 id="credits">Credits</h3>
+<p>This vulnerability was found &amp; reported by 
+Shengjie Li, Huazhong University of Science and Technology
+Zhi Li, Huazhong University of Science and Technology
+Weijie Liu, Nankai University</p>
+<p>The Argo team would like to thank these contributors for their responsible disclosure and constructive communications during the resolve of this issue</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/security/advisories/GHSA-v8wx-v5jq-qhhw">https://github.com/argoproj/argo-cd/security/advisories/GHSA-v8wx-v5jq-qhhw</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41666">https://nvd.nist.gov/vuln/detail/CVE-2024-41666</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/05edb2a9ca48f0f10608c1b49fbb0cf7164f6476">https://github.com/argoproj/argo-cd/commit/05edb2a9ca48f0f10608c1b49fbb0cf7164f6476</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/e96f32d233504101ddac028a5bf8117433d333d6">https://github.com/argoproj/argo-cd/commit/e96f32d233504101ddac028a5bf8117433d333d6</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/ef535230d8bd8ad7b18aab1ea1063e9751d348c4">https://github.com/argoproj/argo-cd/commit/ef535230d8bd8ad7b18aab1ea1063e9751d348c4</a></li>
+<li><a href="https://drive.google.com/file/d/1Fynj5Sho8Lf8CETqsNXZyPKlTDdmgJuN/view?usp=sharing">https://drive.google.com/file/d/1Fynj5Sho8Lf8CETqsNXZyPKlTDdmgJuN/view?usp=sharing</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3006">https://pkg.go.dev/vuln/GO-2024-3006</a></li>
+<li><a href="https://github.com/advisories/GHSA-v8wx-v5jq-qhhw">https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-07-24T20:54:02.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/argoproj/argo-cd/v2] The Argo CD web terminal session does not handle the revocation of user permissions properly]]></title>
+        <id>https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</id>
+        <link href="https://github.com/advisories/GHSA-v8wx-v5jq-qhhw"/>
+        <updated>2024-08-07T14:24:25.000Z</updated>
+        <content type="html"><![CDATA[<p>Argo CD v2.11.3 and before, discovering that even if the user's <code>p, role:myrole, exec, create, */*, allow</code> permissions are revoked, the user can still send any Websocket message, which allows the user to view sensitive information. Even though they shouldn't have such access.</p>
+<h2 id="description">Description</h2>
+<p>Argo CD has a Web-based terminal that allows you to get a shell inside a running pod, just like you would with kubectl exec. However, when the administrator enables this function and grants permission to the user <code>p, role:myrole, exec, create, */*, allow</code>, even if the user revokes this permission, the user can still perform operations in the container, as long as the user keeps the terminal view open for a long time. CVE-2023-40025 Although the token expiration and revocation of the user are fixed, however, the fix does not address the situation of revocation of only user <code>p, role:myrole, exec, create, */*, allow</code> permissions, which may still lead to the leakage of sensitive information.</p>
+<h3 id="patches">Patches</h3>
+<p>A patch for this vulnerability has been released in the following Argo CD versions:</p>
+<p>v2.11.7
+v2.10.16
+v2.9.21</p>
+<h3 id="for-more-information">For more information</h3>
+<p>If you have any questions or comments about this advisory:</p>
+<p>Open an issue in <a href="https://github.com/argoproj/argo-cd/issues">the Argo CD issue tracker</a> or <a href="https://github.com/argoproj/argo-cd/discussions">discussions</a>
+Join us on <a href="https://argoproj.github.io/community/join-slack">Slack</a> in channel #argo-cd</p>
+<h3 id="credits">Credits</h3>
+<p>This vulnerability was found &amp; reported by 
+Shengjie Li, Huazhong University of Science and Technology
+Zhi Li, Huazhong University of Science and Technology
+Weijie Liu, Nankai University</p>
+<p>The Argo team would like to thank these contributors for their responsible disclosure and constructive communications during the resolve of this issue</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/security/advisories/GHSA-v8wx-v5jq-qhhw">https://github.com/argoproj/argo-cd/security/advisories/GHSA-v8wx-v5jq-qhhw</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41666">https://nvd.nist.gov/vuln/detail/CVE-2024-41666</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/05edb2a9ca48f0f10608c1b49fbb0cf7164f6476">https://github.com/argoproj/argo-cd/commit/05edb2a9ca48f0f10608c1b49fbb0cf7164f6476</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/e96f32d233504101ddac028a5bf8117433d333d6">https://github.com/argoproj/argo-cd/commit/e96f32d233504101ddac028a5bf8117433d333d6</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/commit/ef535230d8bd8ad7b18aab1ea1063e9751d348c4">https://github.com/argoproj/argo-cd/commit/ef535230d8bd8ad7b18aab1ea1063e9751d348c4</a></li>
+<li><a href="https://drive.google.com/file/d/1Fynj5Sho8Lf8CETqsNXZyPKlTDdmgJuN/view?usp=sharing">https://drive.google.com/file/d/1Fynj5Sho8Lf8CETqsNXZyPKlTDdmgJuN/view?usp=sharing</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2024-3006">https://pkg.go.dev/vuln/GO-2024-3006</a></li>
+<li><a href="https://github.com/advisories/GHSA-v8wx-v5jq-qhhw">https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-v8wx-v5jq-qhhw</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-07-24T20:54:02.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/appleboy/gorush] Gorush uses deprecated TLS versions]]></title>
+        <id>https://github.com/advisories/GHSA-p3pf-mff8-3h47</id>
+        <link href="https://github.com/advisories/GHSA-p3pf-mff8-3h47"/>
+        <updated>2024-08-07T14:17:12.000Z</updated>
+        <content type="html"><![CDATA[<p>An issue discovered in the RunHTTPServer function in Gorush v1.18.4 allows attackers to intercept and manipulate data due to use of deprecated TLS version.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41270">https://nvd.nist.gov/vuln/detail/CVE-2024-41270</a></li>
+<li><a href="https://gist.github.com/nyxfqq/cfae38fada582a0f576d154be1aeb1fc">https://gist.github.com/nyxfqq/cfae38fada582a0f576d154be1aeb1fc</a></li>
+<li><a href="https://github.com/appleboy/gorush/issues/792">https://github.com/appleboy/gorush/issues/792</a></li>
+<li><a href="https://github.com/appleboy/gorush/commit/067cb597e485e40b790a267187bf7f00730b1c4b">https://github.com/appleboy/gorush/commit/067cb597e485e40b790a267187bf7f00730b1c4b</a></li>
+<li><a href="https://github.com/advisories/GHSA-p3pf-mff8-3h47">https://github.com/advisories/GHSA-p3pf-mff8-3h47</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-p3pf-mff8-3h47</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2024-08-06T21:30:47.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[github.com/netbirdio/netbird] NetBird uses a static initialization vector (IV)]]></title>
+        <id>https://github.com/advisories/GHSA-9v35-4xcr-w9ph</id>
+        <link href="https://github.com/advisories/GHSA-9v35-4xcr-w9ph"/>
+        <updated>2024-08-07T14:16:59.000Z</updated>
+        <content type="html"><![CDATA[<p>A static initialization vector (IV) in the encrypt function of netbird v0.28.4 allows attackers to obtain sensitive information.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-41260">https://nvd.nist.gov/vuln/detail/CVE-2024-41260</a></li>
+<li><a href="https://gist.github.com/nyxfqq/92232108ac153e95d538bb17fc5ad636">https://gist.github.com/nyxfqq/92232108ac153e95d538bb17fc5ad636</a></li>
+<li><a href="https://github.com/netbirdio/netbird/issues/2246">https://github.com/netbirdio/netbird/issues/2246</a></li>
+<li><a href="https://github.com/advisories/GHSA-9v35-4xcr-w9ph">https://github.com/advisories/GHSA-9v35-4xcr-w9ph</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-9v35-4xcr-w9ph</uri>
+        </author>
+        <category label="severity" term="HIGH"/>
+        <published>2024-08-01T18:32:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[k8s.io/kubernetes] Potential proxy IP restriction bypass in Kubernetes]]></title>
+        <id>https://github.com/advisories/GHSA-qh36-44jv-c8xj</id>
+        <link href="https://github.com/advisories/GHSA-qh36-44jv-c8xj"/>
+        <updated>2024-08-06T23:53:55.000Z</updated>
+        <content type="html"><![CDATA[<p>As mitigations to a report from 2019 and CVE-2020-8555, Kubernetes attempts to prevent proxied connections from accessing link-local or localhost networks when making user-driven connections to Services, Pods, Nodes, or StorageClass service providers. As part of this mitigation Kubernetes does a DNS name resolution check and validates that response IPs are not in the link-local (169.254.0.0/16) or localhost (127.0.0.0/8) range. Kubernetes then performs a second DNS resolution without validation for the actual connection. If a non-standard DNS server returns different non-cached responses, a user may be able to bypass the proxy IP restriction and access private networks on the control plane. All versions of Kubernetes are impacted, and there is no fix in place.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-8562">https://nvd.nist.gov/vuln/detail/CVE-2020-8562</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/101493">https://github.com/kubernetes/kubernetes/issues/101493</a></li>
+<li><a href="https://groups.google.com/g/kubernetes-security-announce/c/-MFX60_wdOY">https://groups.google.com/g/kubernetes-security-announce/c/-MFX60_wdOY</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/101493#issuecomment-2272095629">https://github.com/kubernetes/kubernetes/issues/101493#issuecomment-2272095629</a></li>
+<li><a href="https://security.netapp.com/advisory/ntap-20220225-0002">https://security.netapp.com/advisory/ntap-20220225-0002</a></li>
+<li><a href="https://github.com/advisories/GHSA-qh36-44jv-c8xj">https://github.com/advisories/GHSA-qh36-44jv-c8xj</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-qh36-44jv-c8xj</uri>
+        </author>
+        <category label="severity" term="LOW"/>
+        <published>2022-02-02T00:01:58.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[k8s.io/kubernetes] Potential proxy IP restriction bypass in Kubernetes]]></title>
+        <id>https://github.com/advisories/GHSA-qh36-44jv-c8xj</id>
+        <link href="https://github.com/advisories/GHSA-qh36-44jv-c8xj"/>
+        <updated>2024-08-06T23:53:55.000Z</updated>
+        <content type="html"><![CDATA[<p>As mitigations to a report from 2019 and CVE-2020-8555, Kubernetes attempts to prevent proxied connections from accessing link-local or localhost networks when making user-driven connections to Services, Pods, Nodes, or StorageClass service providers. As part of this mitigation Kubernetes does a DNS name resolution check and validates that response IPs are not in the link-local (169.254.0.0/16) or localhost (127.0.0.0/8) range. Kubernetes then performs a second DNS resolution without validation for the actual connection. If a non-standard DNS server returns different non-cached responses, a user may be able to bypass the proxy IP restriction and access private networks on the control plane. All versions of Kubernetes are impacted, and there is no fix in place.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-8562">https://nvd.nist.gov/vuln/detail/CVE-2020-8562</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/101493">https://github.com/kubernetes/kubernetes/issues/101493</a></li>
+<li><a href="https://groups.google.com/g/kubernetes-security-announce/c/-MFX60_wdOY">https://groups.google.com/g/kubernetes-security-announce/c/-MFX60_wdOY</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/101493#issuecomment-2272095629">https://github.com/kubernetes/kubernetes/issues/101493#issuecomment-2272095629</a></li>
+<li><a href="https://security.netapp.com/advisory/ntap-20220225-0002">https://security.netapp.com/advisory/ntap-20220225-0002</a></li>
+<li><a href="https://github.com/advisories/GHSA-qh36-44jv-c8xj">https://github.com/advisories/GHSA-qh36-44jv-c8xj</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-qh36-44jv-c8xj</uri>
+        </author>
+        <category label="severity" term="LOW"/>
+        <published>2022-02-02T00:01:58.000Z</published>
+    </entry>
+</feed>
