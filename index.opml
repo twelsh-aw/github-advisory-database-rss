@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><opml version="2.0">
     <head>
     <title>GitHub Search Subscriptions</title>
-    <dateCreated>2024-08-10T14:06:02.575Z</dateCreated>
+    <dateCreated>2024-08-10T14:06:18.001Z</dateCreated>
 </head>
     <body>
     <outline title="Subscriptions">
         <outline>
-            <outline type="rss" title="Security Advisories for IAM dependencies" htmlUrl="https://twelsh-aw.github.io/github-advisory-database-rss/iam.json" xmlUrl="https://twelsh-aw.github.io/github-advisory-database-rss/iam.json"/>
+            <outline type="rss" title="Security Advisories for github.com/openfga/openfga" htmlUrl="https://twelsh-aw.github.io/github-advisory-database-rss/github.com/openfga/openfga.json" xmlUrl="https://twelsh-aw.github.io/github-advisory-database-rss/github.com/openfga/openfga.json"/>
         </outline>
     </outline>
 </body>

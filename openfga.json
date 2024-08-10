@@ -1,0 +1,177 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Security Advisories for github.com/openfga/openfga",
+    "home_page_url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago",
+    "feed_url": "https://twelsh-aw.github.io/github-advisory-database-rss/github.com/openfga/openfga.json",
+    "description": "Security Advisories for github.com/openfga/openfga on GitHub",
+    "items": [
+        {
+            "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>OpenFGA v1.5.7 and v1.5.8 are vulnerable to authorization bypass when calling Check API with a model that uses <code>but not</code> and <code>from</code> expressions and a userset. </p>\n<h2 id=\"fix\">Fix</h2>\n<p>Downgrade to v1.5.6 as soon as possible. This downgrade is backward compatible.</p>\n<p>We are currently working on a fix which will be included in the next release.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8\">https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-3f6g-m4hr-59h8\">https://github.com/advisories/GHSA-3f6g-m4hr-59h8</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-3f6g-m4hr-59h8",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2024-08-09T22:23:29.000Z",
+            "date_published": "2024-08-09T21:23:26.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-3f6g-m4hr-59h8"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h1 id=\"overview\">Overview</h1>\n<p>Some end users of OpenFGA v1.5.0 or later are vulnerable to authorization bypass when calling Check or ListObjects APIs.</p>\n<h1 id=\"am-i-affected\">Am I Affected?</h1>\n<p>You are very likely affected if your model involves exclusion (e.g. <code>a but not b</code>) or intersection (e.g. <code>a and b</code>) and you have any cyclical relationships. If you are using these, please update as soon as possible.</p>\n<h1 id=\"fix\">Fix</h1>\n<p>Update to v1.5.3</p>\n<h1 id=\"backward-compatibility\">Backward Compatibility</h1>\n<p>This update is backward compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-8cph-m685-6v6r\">https://github.com/openfga/openfga/security/advisories/GHSA-8cph-m685-6v6r</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/b6a6d99b2bdbf8c3781503989576076289f48ed2\">https://github.com/openfga/openfga/commit/b6a6d99b2bdbf8c3781503989576076289f48ed2</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2024-31452\">https://nvd.nist.gov/vuln/detail/CVE-2024-31452</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-8cph-m685-6v6r\">https://github.com/advisories/GHSA-8cph-m685-6v6r</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-8cph-m685-6v6r",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2024-04-17T17:05:29.000Z",
+            "date_published": "2024-04-16T22:57:58.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-8cph-m685-6v6r"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>OpenFGA is vulnerable to a DoS attack. In some scenarios that depend on the model and tuples used, a call to ListObjects may not  release memory properly. So when a sufficiently high number of those calls are executed, the OpenFGA server can create an \"out of memory\" error and terminate.</p>\n<h2 id=\"fix\">Fix</h2>\n<p>Upgrade to v1.4.3. This upgrade is backwards compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-rxpw-85vw-fx87\">https://github.com/openfga/openfga/security/advisories/GHSA-rxpw-85vw-fx87</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2024-23820\">https://nvd.nist.gov/vuln/detail/CVE-2024-23820</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/908ac85c8b7769c8042cca31886df8db01976c39\">https://github.com/openfga/openfga/commit/908ac85c8b7769c8042cca31886df8db01976c39</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v1.4.3\">https://github.com/openfga/openfga/releases/tag/v1.4.3</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-rxpw-85vw-fx87\">https://github.com/advisories/GHSA-rxpw-85vw-fx87</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-rxpw-85vw-fx87",
+            "title": "[github.com/openfga/openfga] OpenFGA denial of service",
+            "date_modified": "2024-02-01T21:03:38.000Z",
+            "date_published": "2024-01-26T20:12:00.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-rxpw-85vw-fx87"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>OpenFGA is vulnerable to a DoS attack. When a number of ListObjects calls are executed, in some scenarios, those calls are not releasing resources even after a response has been sent, and the service as a whole becomes unresponsive.</p>\n<h2 id=\"fix\">Fix</h2>\n<p>Upgrade to v1.3.4. This upgrade is backwards compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-hr4f-6jh8-f2vq\">https://github.com/openfga/openfga/security/advisories/GHSA-hr4f-6jh8-f2vq</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2023-45810\">https://nvd.nist.gov/vuln/detail/CVE-2023-45810</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v1.3.4\">https://github.com/openfga/openfga/releases/tag/v1.3.4</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-hr4f-6jh8-f2vq\">https://github.com/advisories/GHSA-hr4f-6jh8-f2vq</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-hr4f-6jh8-f2vq",
+            "title": "[github.com/openfga/openfga] OpenFGA DoS vulnerability",
+            "date_modified": "2023-11-12T05:01:25.000Z",
+            "date_published": "2023-10-18T18:25:58.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-hr4f-6jh8-f2vq"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>OpenFGA is vulnerable to a DoS attack when certain Check calls are executed against authorization models that contain circular relationship definitions. When the call is made, it's possible for the server to exhaust resources and die.</p>\n<h2 id=\"am-i-affected\">Am I Affected?</h2>\n<p>Yes, if your store contains an authorization model that allows circular relationships. For example, with this model:</p>\n<pre><code>model\n  schema 1.1\n\ntype user\n\ntype group\n  relations\n    define memberA: [user] or memberB or memberC or memberD or memberE\n    define memberB: [user] or memberA or memberC or memberD or memberE\n    define memberC: [user] or memberA or memberB or memberD or memberE\n    define memberD: [user] or memberA or memberB or memberC or memberE\n    define memberE: [user] or memberA or memberB or memberC or memberD\n</code></pre>\n<p>This Check: <code>(user:anne, memberA, group:X)</code> can exhaust memory in the server.</p>\n<h2 id=\"fix\">Fix</h2>\n<p>Upgrade to v1.3.2 and update any offending models.</p>\n<p>  <strong>[BREAKING]</strong> If your model contained cycles or a relation definition that has the relation itself in its evaluation path, then Checks and queries that require evaluation will no longer be evaluated on v1.3.2+ and will return errors instead. You will need to update your models to remove the cycles.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-2hm9-h873-pgqh\">https://github.com/openfga/openfga/security/advisories/GHSA-2hm9-h873-pgqh</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2023-43645\">https://nvd.nist.gov/vuln/detail/CVE-2023-43645</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/725296025fd81227c89525808652c6acd4a605f6\">https://github.com/openfga/openfga/commit/725296025fd81227c89525808652c6acd4a605f6</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-2hm9-h873-pgqh\">https://github.com/advisories/GHSA-2hm9-h873-pgqh</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-2hm9-h873-pgqh",
+            "title": "[github.com/openfga/openfga] OpenFGA Vulnerable to DoS from circular relationship definitions",
+            "date_modified": "2023-11-10T05:05:26.000Z",
+            "date_published": "2023-09-28T21:27:04.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-2hm9-h873-pgqh"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>Some end users of OpenFGA v1.3.0 or earlier are vulnerable to authorization bypass when calling the ListObjects API. This means that the API sometimes returns more objects than it should.</p>\n<h2 id=\"am-i-affected\">Am I Affected?</h2>\n<p>The vulnerability affects customers using ListObjects with specific models. The affected models contain expressions of type <code>rel1 from type1</code>.</p>\n<h2 id=\"fix\">Fix</h2>\n<p>Update to v1.3.1.</p>\n<h2 id=\"backward-compatibility\">Backward Compatibility</h2>\n<p>This update is backward compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-jcf2-mxr2-gmqp\">https://github.com/openfga/openfga/security/advisories/GHSA-jcf2-mxr2-gmqp</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v1.3.1\">https://github.com/openfga/openfga/releases/tag/v1.3.1</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2023-40579\">https://nvd.nist.gov/vuln/detail/CVE-2023-40579</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-jcf2-mxr2-gmqp\">https://github.com/advisories/GHSA-jcf2-mxr2-gmqp</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-jcf2-mxr2-gmqp",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2024-05-10T14:24:59.000Z",
+            "date_published": "2023-08-25T19:45:57.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-jcf2-mxr2-gmqp"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>OpenFGA versions v1.1.0 and prior are vulnerable to a DoS attack when certain Check and ListObjects calls are executed against authorization models that contain circular relationship definitions.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this vulnerability if you are using OpenFGA v1.1.0 or earlier, and if you are executing certain <a href=\"https://openfga.dev/api/service#/Relationship%20Queries/Check\">Check</a> or <a href=\"https://openfga.dev/api/service#/Relationship%20Queries/ListObjects\">ListObjects</a> calls against a vulnerable authorization model. To see which of your models could be vulnerable to this attack, download OpenFGA v1.2.0 and run the following command: </p>\n<pre><code>./openfga validate-models --datastore-engine &lt;ENGINE&gt; --datastore-uri &lt;URI&gt; | jq .[] | select(.Error | contains(\"loop\"))\n</code></pre>\n<p>replacing the variables <code>&lt;ENGINE&gt;</code> and <code>&lt;URI&gt;</code> as needed.</p>\n<h3 id=\"fix\">Fix</h3>\n<p>Upgrade to v1.1.1.</p>\n<h3 id=\"backward-compatibility\">Backward Compatibility</h3>\n<p>If you are not passing an invalid authorization model (as identified by running <code>./openfga validate-models</code>) as a parameter of your Check and ListObjects calls, this upgrade is backwards compatible. </p>\n<p>Otherwise, OpenFGA v1.1.1 will start returning HTTP 400 status codes on those calls.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-hr9r-8phq-5x8j\">https://github.com/openfga/openfga/security/advisories/GHSA-hr9r-8phq-5x8j</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2023-35933\">https://nvd.nist.gov/vuln/detail/CVE-2023-35933</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/087ce392595f3c319ab3028b5089118ea4063452\">https://github.com/openfga/openfga/commit/087ce392595f3c319ab3028b5089118ea4063452</a></li>\n<li><a href=\"https://openfga.dev/api/service#/Relationship%20Queries/Check\">https://openfga.dev/api/service#/Relationship%20Queries/Check</a></li>\n<li><a href=\"https://openfga.dev/api/service#/Relationship%20Queries/ListObjects\">https://openfga.dev/api/service#/Relationship%20Queries/ListObjects</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-hr9r-8phq-5x8j\">https://github.com/advisories/GHSA-hr9r-8phq-5x8j</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-hr9r-8phq-5x8j",
+            "title": "[github.com/openfga/openfga] OpenFGA vulnerable to denial of service due to circular relationship",
+            "date_modified": "2023-11-07T05:01:25.000Z",
+            "date_published": "2023-06-28T22:49:49.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-hr9r-8phq-5x8j"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>During our internal security assessment, it was discovered that OpenFGA versions v0.3.0 is vulnerable to authorization bypass under certain conditions.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this vulnerability if <strong>all</strong> of the following applies:</p>\n<ol>\n<li>You are using OpenFGA v0.3.0</li>\n<li>You created a model using modeling language v1.1 that applies a type restriction to an object e.g. <code>define viewer: [user]</code></li>\n<li>You created tuples based on the aforementioned model, e.g. <code>document:1#viewer@user:jon</code></li>\n<li>You updated the previous model by adding a new type and replacing the previous restriction with the newly added type e.g. <code>define viewer: [employee]</code></li>\n<li>You use the tuples created against the first model (step 3) and issue checks against the updated model e.g. <code>user=user:jon, relation=viewer, object:document:1</code></li>\n</ol>\n<h3 id=\"how-to-fix-that\">How to fix that?</h3>\n<p>Upgrade to version v0.3.1</p>\n<h3 id=\"backward-compatibility\">Backward Compatibility</h3>\n<p>This update is backward compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-m3q4-7qmj-657m\">https://github.com/openfga/openfga/security/advisories/GHSA-m3q4-7qmj-657m</a></li>\n<li><a href=\"https://github.com/openfga/openfga/pull/422\">https://github.com/openfga/openfga/pull/422</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v0.3.1\">https://github.com/openfga/openfga/releases/tag/v0.3.1</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2022-23542\">https://nvd.nist.gov/vuln/detail/CVE-2022-23542</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-m3q4-7qmj-657m\">https://github.com/advisories/GHSA-m3q4-7qmj-657m</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-m3q4-7qmj-657m",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2023-01-29T05:01:07.000Z",
+            "date_published": "2022-12-20T19:33:27.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-m3q4-7qmj-657m"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>During our internal security assessment, it was discovered that OpenFGA versions v0.2.4 and prior are vulnerable to authorization bypass under certain conditions.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this vulnerability if you are using <code>openfga/openfga</code> version v0.2.4 or prior, and have tuples where the <code>user</code> field is set to a <code>userset</code> e.g. <code>folder:test#owner</code>, and the tuple's relation is used on the right-hand side of a <code>from</code> statement.</p>\n<h3 id=\"how-to-fix-that\">How to fix that?</h3>\n<p>Upgrade to version 0.2.5.</p>\n<h3 id=\"backward-compatibility\">Backward Compatibility</h3>\n<p>This update is not backward compatible.\nAny tuples where the <code>user</code> field is set to a <code>userset</code>, and the tuple's relation is used on the right-hand side of a <code>from</code> statement have to be rewritten.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-3gfj-fxx4-f22w\">https://github.com/openfga/openfga/security/advisories/GHSA-3gfj-fxx4-f22w</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2022-39352\">https://nvd.nist.gov/vuln/detail/CVE-2022-39352</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v0.2.5\">https://github.com/openfga/openfga/releases/tag/v0.2.5</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/776e80505e8d184b2286acc8268d8d74f36a9984\">https://github.com/openfga/openfga/commit/776e80505e8d184b2286acc8268d8d74f36a9984</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-3gfj-fxx4-f22w\">https://github.com/advisories/GHSA-3gfj-fxx4-f22w</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-3gfj-fxx4-f22w",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2023-04-14T19:13:54.000Z",
+            "date_published": "2022-11-08T22:31:25.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-3gfj-fxx4-f22w"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>During our internal security assessment, it was discovered that OpenFGA versions <code>v0.2.3</code> and prior are vulnerable to authorization bypass under certain conditions.</p>\n<h3 id=\"am-i-affected\">Am I affected?</h3>\n<p>You are affected by this vulnerability if you are using <code>openfga/openfga</code> version <code>v0.2.3</code> and you added a tuple with a wildcard (*) assigned to a tupleset relation (the right hand side of a ‘from’ statement).</p>\n<h3 id=\"how-to-fix-that\">How to fix that?</h3>\n<p>Upgrade to version <code>v0.2.4</code>.</p>\n<h3 id=\"backward-compatibility\">Backward Compatibility</h3>\n<p>This update is not backward compatible with any authorization model that uses wildcard on a tupleset relation.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-vj4m-83m8-xpw5\">https://github.com/openfga/openfga/security/advisories/GHSA-vj4m-83m8-xpw5</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2022-39341\">https://nvd.nist.gov/vuln/detail/CVE-2022-39341</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/b466769cc100b2065047786578718d313f52695b\">https://github.com/openfga/openfga/commit/b466769cc100b2065047786578718d313f52695b</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v0.2.4\">https://github.com/openfga/openfga/releases/tag/v0.2.4</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-vj4m-83m8-xpw5\">https://github.com/advisories/GHSA-vj4m-83m8-xpw5</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-vj4m-83m8-xpw5",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass via tupleset wildcard",
+            "date_modified": "2023-06-27T21:55:56.000Z",
+            "date_published": "2022-10-25T20:21:45.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-vj4m-83m8-xpw5"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>During our internal security assessment, it was discovered that OpenFGA versions <code>v0.2.3</code> and prior are vulnerable to authorization bypass under certain conditions.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this vulnerability if you are using <code>openfga/openfga</code> version <code>v0.2.3</code> or prior, and your model has a relation defined as a tupleset (the right hand side of a ‘from’ statement) that involves anything other than a direct relationship (e.g. ‘as self’)</p>\n<h3 id=\"how-to-fix-that\">How to fix that?</h3>\n<p>Upgrade to version <code>v0.2.4</code>.</p>\n<h3 id=\"backward-compatibility\">Backward Compatibility</h3>\n<p>This update is not backward compatible.\nAny model involving rewritten tupleset relations will no longer be acceptable and has to be modified.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-f4mm-2r69-mg5f\">https://github.com/openfga/openfga/security/advisories/GHSA-f4mm-2r69-mg5f</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2022-39342\">https://nvd.nist.gov/vuln/detail/CVE-2022-39342</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/c8db1ee3d2a366f18e585dd33236340e76e784c4\">https://github.com/openfga/openfga/commit/c8db1ee3d2a366f18e585dd33236340e76e784c4</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v0.2.4\">https://github.com/openfga/openfga/releases/tag/v0.2.4</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-f4mm-2r69-mg5f\">https://github.com/advisories/GHSA-f4mm-2r69-mg5f</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-f4mm-2r69-mg5f",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2023-06-27T21:56:01.000Z",
+            "date_published": "2022-10-25T20:21:33.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-f4mm-2r69-mg5f"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
+            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>During our internal security assessment, it was discovered that <code>streamed-list-objects</code> endpoint was not validating the authorization header resulting in the disclosure of objects in the store.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this vulnerability if you are using <code>openfga/openfga</code> version <code>v0.2.3</code> or prior and you are exposing the OpenFGA service to the internet.</p>\n<h3 id=\"how-to-fix-that\">How to fix that?</h3>\n<p>Upgrade to version <code>v0.2.4</code>.</p>\n<h3 id=\"backward-compatibility\">Backward Compatibility</h3>\n<p>This update is backward compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-95x7-mh78-7w2r\">https://github.com/openfga/openfga/security/advisories/GHSA-95x7-mh78-7w2r</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2022-39340\">https://nvd.nist.gov/vuln/detail/CVE-2022-39340</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/779d73d4b6d067ee042ec9b59fec707eed71e42f\">https://github.com/openfga/openfga/commit/779d73d4b6d067ee042ec9b59fec707eed71e42f</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v0.2.4\">https://github.com/openfga/openfga/releases/tag/v0.2.4</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-95x7-mh78-7w2r\">https://github.com/advisories/GHSA-95x7-mh78-7w2r</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-95x7-mh78-7w2r",
+            "title": "[github.com/openfga/openfga] OpenFGA subject to Information Disclosure via streamed-list-objects endpoint",
+            "date_modified": "2023-06-27T21:55:50.000Z",
+            "date_published": "2022-10-25T20:13:38.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-95x7-mh78-7w2r"
+            },
+            "tags": [
+                "severity"
+            ]
+        }
+    ]
+}
