@@ -1,12 +1,15 @@
 import { SecurityAdvisoryEcosystem } from "@octokit/graphql-schema";
 
 const BASE_URL = "https://twelsh-aw.github.io/github-advisory-database-rss";
-const createBase = (ecosystem: SecurityAdvisoryEcosystem, link: string) => {
+const createBase = (ecosystem: SecurityAdvisoryEcosystem, pkg: string) => {
     const low = ecosystem.toLowerCase();
+    const link = pkg.split("/").findLast((_) => true);
     return {
         ecosystem: ecosystem,
         link: `${BASE_URL}/${link}.json`,
-        homepage: `https://github.com/advisories?query=type%3Areviewed+ecosystem%3A${low}`
+        homepage: `https://github.com/advisories?query=type%3Areviewed+ecosystem%3A${low}+package%3A${pkg}`,
+        title: `Security Advisories for ${pkg}`,
+        package: pkg
     };
 };
 export type RSS_FEED = {
@@ -18,8 +21,6 @@ export type RSS_FEED = {
 };
 export const RSS_FEEDS: RSS_FEED[] = [
     {
-        title: "Security Advisories for github.com/openfga/openfga",
-        package: "github.com/openfga/openfga",
         ...createBase("GO", "github.com/openfga/openfga")
     }
     // {
