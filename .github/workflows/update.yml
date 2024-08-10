@@ -5,6 +5,7 @@ on:
       - main  # Set a branch name to trigger deployment
   schedule:
     - cron: '0 * * * *' # Update RSS flow hourly
+  workflow_dispatch:
 jobs:
   book-rss:
     name: "Generate RSS"
