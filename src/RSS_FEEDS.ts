@@ -1,5 +1,4 @@
 import { SecurityAdvisoryEcosystem } from "@octokit/graphql-schema";
-import { GenerateRSSOptions, Item } from "./generate-rss";
 
 const BASE_URL = "https://twelsh-aw.github.io/github-advisory-database-rss";
 const createBase = (ecosystem: SecurityAdvisoryEcosystem, link: string) => {
@@ -15,17 +14,13 @@ export type RSS_FEED = {
     ecosystem: SecurityAdvisoryEcosystem;
     link: string;
     homepage: string;
-    options?: GenerateRSSOptions;
+    package: string;
 };
 export const RSS_FEEDS: RSS_FEED[] = [
     {
-        title: "Security Advisories for IAM dependencies",
-        options: {
-            filter: (item: Item) => {
-                return item.title.includes("github.com/openfga");
-            }
-        } as GenerateRSSOptions,
-        ...createBase("GO", "iam")
+        title: "Security Advisories for github.com/openfga/openfga",
+        package: "github.com/openfga/openfga",
+        ...createBase("GO", "github.com/openfga/openfga")
     }
     // {
     //     title: "Security Advisory for JavaScript packages hosted at npmjs.com",

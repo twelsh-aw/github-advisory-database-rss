@@ -21,7 +21,7 @@ const createBody = (descriptionMarkdown: string, references: SecurityAdvisoryRef
         : "";
     return md(descriptionMarkdown + referencesMD);
 };
-export type Item = {
+type Item = {
     url: string;
     title: string;
     createdAt: string;
@@ -57,8 +57,8 @@ export const search = ({
 }): Promise<Item[]> => {
     return graphql<{ securityVulnerabilities: SecurityVulnerabilityConnection }>(
         `
-            query ($ECOSYSTEM: SecurityAdvisoryEcosystem!, $SIZE: Int!) {
-                securityVulnerabilities(ecosystem: $ECOSYSTEM, first: $SIZE) {
+            query ($ECOSYSTEM: SecurityAdvisoryEcosystem!, $SIZE: Int!, $PACKAGE: String) {
+                securityVulnerabilities(ecosystem: $ECOSYSTEM, first: $SIZE, package: $PACKAGE) {
                     nodes {
                         package {
                             name
@@ -83,6 +83,7 @@ export const search = ({
         {
             ECOSYSTEM: ecosystem,
             SIZE,
+            PACKAGE: "github.com/openfga/openfga",
             headers: {
                 authorization: `token ${GITHUB_TOKEN}`
             }
