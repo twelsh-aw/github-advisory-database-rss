@@ -7,7 +7,7 @@ const createBase = (ecosystem: SecurityAdvisoryEcosystem, pkg: string) => {
     return {
         ecosystem: ecosystem,
         link: `${BASE_URL}/${link}.json`,
-        homepage: `https://github.com/advisories?query=type%3Areviewed+ecosystem%3A${low}+package%3A${pkg}`,
+        homepage: `https://github.com/advisories?query=type%3Areviewed+ecosystem%3A${low}+affects%3A${pkg}`,
         title: `Security Advisories for ${pkg}`,
         package: pkg
     };
