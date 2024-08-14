@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2024-08-14T17:06:05.519Z</updated>
+    <updated>2024-08-14T18:09:02.863Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -15,15 +15,15 @@
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
         <id>https://github.com/advisories/GHSA-3f6g-m4hr-59h8</id>
         <link href="https://github.com/advisories/GHSA-3f6g-m4hr-59h8"/>
-        <updated>2024-08-12T18:03:58.000Z</updated>
+        <updated>2024-08-14T17:18:27.000Z</updated>
         <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
 <p>OpenFGA v1.5.7 and v1.5.8 are vulnerable to authorization bypass when calling Check API with a model that uses <code>but not</code> and <code>from</code> expressions and a userset. </p>
 <h2 id="fix">Fix</h2>
 <ul>
-<li>If you are using OpenFGA within Docker or as a Go library, as a binary, or through Docker, downgrade to v1.5.6 as soon as possible. </li>
-<li>If using Helm chart, upgrade to 0.2.11 as soon as possible.</li>
+<li>If you are using OpenFGA within Docker or as a Go library, as a binary, or through Docker, upgrade to v1.5.9 as soon as possible</li>
+<li>If using Helm chart, upgrade to 0.2.12 as soon as possible.</li>
 </ul>
-<p>This fix is backward compatible, except if you wrote your own custom storage adapter (due to reverting the breaking changes in 1.5.7).</p>
+<p>This fix is backward compatible.</p>
 <h3 id="references">References</h3>
 <ul>
 <li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8">https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8</a></li>
