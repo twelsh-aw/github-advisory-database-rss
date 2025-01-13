@@ -6,6 +6,20 @@
     "description": "Security Advisories for github.com/openfga/openfga on GitHub",
     "items": [
         {
+            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>OpenFGA v1.3.8 to v1.8.2 (Helm chart openfga-0.1.38 to openfga-0.2.19, docker v1.3.8 to v.1.8.2) are vulnerable to authorization bypass when certain Check and ListObject calls are executed.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this authorization bypass vulnerability if you are using OpenFGA v1.3.8 to v1.8.2, specifically under the following conditions: </p>\n<ol>\n<li>Calling Check API or ListObjects with a model that uses <a href=\"https://openfga.dev/docs/modeling/conditions\">conditions</a>, and </li>\n<li>OpenFGA is configured with caching enabled (<code>OPENFGA_CHECK_QUERY_CACHE_ENABLED</code>), and </li>\n<li>Check API call or ListObjects API calls contain <a href=\"https://openfga.dev/docs/concepts#what-are-contextual-tuples\">contextual tuples</a> that include conditions.</li>\n</ol>\n<h3 id=\"fix\">Fix</h3>\n<p>Upgrade to v1.8.3. This upgrade is backwards compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-32q6-rr98-cjqv\">https://github.com/openfga/openfga/security/advisories/GHSA-32q6-rr98-cjqv</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-32q6-rr98-cjqv\">https://github.com/advisories/GHSA-32q6-rr98-cjqv</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-32q6-rr98-cjqv",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2025-01-13T19:59:25.000Z",
+            "date_published": "2025-01-13T19:59:24.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-32q6-rr98-cjqv"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
             "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>OpenFGA v1.5.7 and v1.5.8 are vulnerable to authorization bypass when calling Check API with a model that uses <code>but not</code> and <code>from</code> expressions and a userset. </p>\n<h2 id=\"fix\">Fix</h2>\n<ul>\n<li>If you are using OpenFGA within Docker or as a Go library, as a binary, or through Docker, upgrade to v1.5.9 as soon as possible</li>\n<li>If using Helm chart, upgrade to 0.2.12 as soon as possible.</li>\n</ul>\n<p>This fix is backward compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8\">https://github.com/openfga/openfga/security/advisories/GHSA-3f6g-m4hr-59h8</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2024-42473\">https://nvd.nist.gov/vuln/detail/CVE-2024-42473</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-3f6g-m4hr-59h8\">https://github.com/advisories/GHSA-3f6g-m4hr-59h8</a></li>\n</ul>\n",
             "url": "https://github.com/advisories/GHSA-3f6g-m4hr-59h8",
             "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
