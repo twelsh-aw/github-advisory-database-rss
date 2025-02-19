@@ -6,6 +6,20 @@
     "description": "Security Advisories for github.com/openfga/openfga on GitHub",
     "items": [
         {
+            "content_html": "<p>Overview\nOpenFGA v1.8.4 or previous (Helm chart &lt; openfga-0.2.22, docker &lt; v.1.8.5) are vulnerable to authorization bypass when certain Check and ListObject calls are executed.</p>\n<p>Am I Affected?\nIf you are using OpenFGA v1.8.4 or previous, specifically under the following conditions, you are affected by this authorization bypass vulnerability:</p>\n<ul>\n<li>Calling Check API or ListObjects with a model that has a relation <a href=\"https://openfga.dev/docs/concepts#what-is-a-directly-related-user-type\">directly assignable</a> to both <a href=\"https://openfga.dev/docs/concepts#what-is-type-bound-public-access\">public access</a> AND <a href=\"https://openfga.dev/docs/concepts#what-is-a-user\">userset</a> with the <a href=\"https://openfga.dev/docs/concepts#what-is-a-type\">same type</a>, and</li>\n<li>A type bound public access tuple is assigned to an object, and</li>\n<li>userset tuple is not assigned to the same object, and</li>\n<li>Check request's user field is a userset that has the same type as the type bound public access tuple's user type</li>\n</ul>\n<p>Fix\nUpgrade to v1.8.5. This upgrade is backwards compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-g4v5-6f5p-m38j\">https://github.com/openfga/openfga/security/advisories/GHSA-g4v5-6f5p-m38j</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/0aee4f47e0c642de78831ceb27bb62b116f49588\">https://github.com/openfga/openfga/commit/0aee4f47e0c642de78831ceb27bb62b116f49588</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-g4v5-6f5p-m38j\">https://github.com/advisories/GHSA-g4v5-6f5p-m38j</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-g4v5-6f5p-m38j",
+            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
+            "date_modified": "2025-02-19T20:25:24.000Z",
+            "date_published": "2025-02-19T20:25:22.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-g4v5-6f5p-m38j"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
             "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>OpenFGA v1.3.8 to v1.8.2 (Helm chart openfga-0.1.38 to openfga-0.2.19, docker v1.3.8 to v.1.8.2) are vulnerable to authorization bypass when certain Check and ListObject calls are executed.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this authorization bypass vulnerability if you are using OpenFGA v1.3.8 to v1.8.2, specifically under the following conditions: </p>\n<ol>\n<li>Calling Check API or ListObjects with a model that uses <a href=\"https://openfga.dev/docs/modeling/conditions\">conditions</a>, and </li>\n<li>OpenFGA is configured with caching enabled (<code>OPENFGA_CHECK_QUERY_CACHE_ENABLED</code>), and </li>\n<li>Check API call or ListObjects API calls contain <a href=\"https://openfga.dev/docs/concepts#what-are-contextual-tuples\">contextual tuples</a> that include conditions.</li>\n</ol>\n<h3 id=\"fix\">Fix</h3>\n<p>Upgrade to v1.8.3. This upgrade is backwards compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-32q6-rr98-cjqv\">https://github.com/openfga/openfga/security/advisories/GHSA-32q6-rr98-cjqv</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2024-56323\">https://nvd.nist.gov/vuln/detail/CVE-2024-56323</a></li>\n<li><a href=\"https://pkg.go.dev/vuln/GO-2025-3384\">https://pkg.go.dev/vuln/GO-2025-3384</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-32q6-rr98-cjqv\">https://github.com/advisories/GHSA-32q6-rr98-cjqv</a></li>\n</ul>\n",
             "url": "https://github.com/advisories/GHSA-32q6-rr98-cjqv",
             "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
