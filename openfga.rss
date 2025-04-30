@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2025-04-30T16:10:52.742Z</updated>
+    <updated>2025-04-30T17:07:56.844Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -11,6 +11,37 @@
     <category term="HIGH"/>
     <category term="MODERATE"/>
     <category term="LOW"/>
+    <entry>
+        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
+        <id>https://github.com/advisories/GHSA-w222-m46c-mgh6</id>
+        <link href="https://github.com/advisories/GHSA-w222-m46c-mgh6"/>
+        <updated>2025-04-30T16:43:34.000Z</updated>
+        <content type="html"><![CDATA[<p>Overview
+OpenFGA v1.8.10 or previous (Helm chart &lt;= openfga-0.2.28, docker &lt;= v.1.8.10) are vulnerable to authorization bypass when certain Check and ListObject calls are executed.</p>
+<p>Am I Affected?
+If you are using OpenFGA v1.8.10 or previous, specifically under the following conditions, you are affected by this authorization bypass vulnerability:</p>
+<ul>
+<li>Calling Check API or ListObjects with an <a href="https://openfga.dev/docs/concepts#what-is-an-authorization-model">authorization model</a> that has tuple cycle.</li>
+<li><a href="https://github.com/openfga/openfga/blob/9b5974458b777707ed2a30ba6303699499e655ee/.config-schema.json#L528">Check query cache</a> is enabled, and</li>
+<li>There are multiple check / list objects requests involving the tuple cycle within the check query TTL</li>
+</ul>
+<p>Fix
+Upgrade to v1.8.11. This upgrade is backwards compatible.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-w222-m46c-mgh6">https://github.com/openfga/openfga/security/advisories/GHSA-w222-m46c-mgh6</a></li>
+<li><a href="https://github.com/openfga/openfga/commit/244302e7a8b979d66cc1874a3899cdff7d47862f">https://github.com/openfga/openfga/commit/244302e7a8b979d66cc1874a3899cdff7d47862f</a></li>
+<li><a href="https://github.com/advisories/GHSA-w222-m46c-mgh6">https://github.com/advisories/GHSA-w222-m46c-mgh6</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-w222-m46c-mgh6</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2025-04-30T16:43:33.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
         <id>https://github.com/advisories/GHSA-g4v5-6f5p-m38j</id>
