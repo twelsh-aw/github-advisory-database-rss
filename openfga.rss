@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2025-05-28T19:07:23.897Z</updated>
+    <updated>2025-05-28T20:10:32.303Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -15,7 +15,7 @@
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
         <id>https://github.com/advisories/GHSA-c72g-53hw-82q7</id>
         <link href="https://github.com/advisories/GHSA-c72g-53hw-82q7"/>
-        <updated>2025-05-23T18:41:39.000Z</updated>
+        <updated>2025-05-28T19:47:27.000Z</updated>
         <content type="html"><![CDATA[<h3 id="overview">Overview</h3>
 <p>OpenFGA v1.8.0 to v1.8.12 ( openfga-0.2.16 &lt;= Helm chart &lt;= openfga-0.2.30, v1.8.0 &lt;= docker &lt;= v.1.8.12) are vulnerable to authorization bypass when certain Check and ListObject calls are executed.</p>
 <h3 id="am-i-affected">Am I Affected?</h3>
@@ -35,6 +35,7 @@
 <li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-c72g-53hw-82q7">https://github.com/openfga/openfga/security/advisories/GHSA-c72g-53hw-82q7</a></li>
 <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-48371">https://nvd.nist.gov/vuln/detail/CVE-2025-48371</a></li>
 <li><a href="https://github.com/openfga/openfga/commit/e5960d4eba92b723de8ff3a5346a07f50c1379ca">https://github.com/openfga/openfga/commit/e5960d4eba92b723de8ff3a5346a07f50c1379ca</a></li>
+<li><a href="https://pkg.go.dev/vuln/GO-2025-3707">https://pkg.go.dev/vuln/GO-2025-3707</a></li>
 <li><a href="https://github.com/advisories/GHSA-c72g-53hw-82q7">https://github.com/advisories/GHSA-c72g-53hw-82q7</a></li>
 </ul>
 ]]></content>
