@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2025-11-20T22:09:06.509Z</updated>
+    <updated>2025-11-20T23:09:02.122Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -11,6 +11,40 @@
     <category term="HIGH"/>
     <category term="MODERATE"/>
     <category term="LOW"/>
+    <entry>
+        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Improper Policy Enforcement]]></title>
+        <id>https://github.com/advisories/GHSA-2c64-vmv2-hgfc</id>
+        <link href="https://github.com/advisories/GHSA-2c64-vmv2-hgfc"/>
+        <updated>2025-11-20T22:48:55.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="overview">Overview</h3>
+<p>OpenFGA v1.4.0 to v1.11.0  (openfga-0.1.34 &lt;= Helm chart &lt;= openfga-0.2.48, v.1.4.0 &lt;= docker &lt;= v.1.11.0) are vulnerable to improper policy enforcement when certain Check and ListObject calls are executed.</p>
+<h3 id="am-i-affected">Am I Affected?</h3>
+<p>You are affected by this vulnerability if you meet the following preconditions:</p>
+<ul>
+<li>You are using OpenFGA v1.4.0 to v1.11.0</li>
+<li>The model has a a relation directly assignable by a <a href="https://openfga.dev/docs/concepts#what-is-type-bound-public-access">type bound pubic access</a> with <a href="https://openfga.dev/docs/modeling/conditions">condition</a></li>
+<li>The same relation is not assignable by a type bound public access without condition</li>
+<li>You have a type assigned for the same relation that is a type bound public access without condition</li>
+</ul>
+<h3 id="fix">Fix</h3>
+<p>Upgrade to v1.11.1. This upgrade is backwards compatible.</p>
+<h3 id="workaround">Workaround</h3>
+<p>None</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-2c64-vmv2-hgfc">https://github.com/openfga/openfga/security/advisories/GHSA-2c64-vmv2-hgfc</a></li>
+<li><a href="https://github.com/openfga/openfga/releases/tag/v1.11.1">https://github.com/openfga/openfga/releases/tag/v1.11.1</a></li>
+<li><a href="https://github.com/advisories/GHSA-2c64-vmv2-hgfc">https://github.com/advisories/GHSA-2c64-vmv2-hgfc</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-2c64-vmv2-hgfc</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2025-11-20T22:48:55.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass ]]></title>
         <id>https://github.com/advisories/GHSA-mgh9-4mwp-fg55</id>
