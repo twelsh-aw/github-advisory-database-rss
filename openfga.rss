@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-02-06T18:31:15.650Z</updated>
+    <updated>2026-02-06T19:29:32.644Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -15,7 +15,7 @@
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Improper Policy Enforcement]]></title>
         <id>https://github.com/advisories/GHSA-jq9f-gm9w-rwm9</id>
         <link href="https://github.com/advisories/GHSA-jq9f-gm9w-rwm9"/>
-        <updated>2026-02-05T21:46:42.000Z</updated>
+        <updated>2026-02-06T19:07:06.000Z</updated>
         <content type="html"><![CDATA[<h3 id="impact">Impact</h3>
 <p>OpenFGA v1.8.5 to v1.11.2 ( openfga-0.2.22 &lt;= Helm chart &lt;= openfga-0.2.51, v.1.8.5 &lt;= docker &lt;= v.1.11.2) are vulnerable to improper policy enforcement when certain Check calls are executed.</p>
 <h3 id="affected-users">Affected Users</h3>
@@ -35,6 +35,8 @@
 <ul>
 <li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-jq9f-gm9w-rwm9">https://github.com/openfga/openfga/security/advisories/GHSA-jq9f-gm9w-rwm9</a></li>
 <li><a href="https://github.com/openfga/openfga/commit/1bb5eddf4a3d2fc718aab7914b8f9a1200d2f7ee">https://github.com/openfga/openfga/commit/1bb5eddf4a3d2fc718aab7914b8f9a1200d2f7ee</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-24851">https://nvd.nist.gov/vuln/detail/CVE-2026-24851</a></li>
+<li><a href="https://github.com/openfga/openfga/releases/tag/v1.11.3">https://github.com/openfga/openfga/releases/tag/v1.11.3</a></li>
 <li><a href="https://github.com/advisories/GHSA-jq9f-gm9w-rwm9">https://github.com/advisories/GHSA-jq9f-gm9w-rwm9</a></li>
 </ul>
 ]]></content>
