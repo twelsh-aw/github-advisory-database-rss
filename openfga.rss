@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-03-27T21:23:39.872Z</updated>
+    <updated>2026-03-27T22:19:11.975Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -15,7 +15,7 @@
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA has an Authorization Bypass through cached keys]]></title>
         <id>https://github.com/advisories/GHSA-h6c8-cww8-35hf</id>
         <link href="https://github.com/advisories/GHSA-h6c8-cww8-35hf"/>
-        <updated>2026-03-26T17:21:51.000Z</updated>
+        <updated>2026-03-27T21:30:42.000Z</updated>
         <content type="html"><![CDATA[<h3 id="description">Description</h3>
 <p>In OpenFGA, under specific conditions, models using conditions with caching enabled can result in two different check requests producing the same cache key. This can result in OpenFGA reusing an earlier cached result for a different request.</p>
 <h3 id="am-i-affected">Am I Affected?</h3>
@@ -33,6 +33,7 @@
 <li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-h6c8-cww8-35hf">https://github.com/openfga/openfga/security/advisories/GHSA-h6c8-cww8-35hf</a></li>
 <li><a href="https://github.com/openfga/openfga/commit/049b50ccd2cc7e163bd897f3d17a7b859ad146f8">https://github.com/openfga/openfga/commit/049b50ccd2cc7e163bd897f3d17a7b859ad146f8</a></li>
 <li><a href="https://github.com/openfga/openfga/releases/tag/v1.13.1">https://github.com/openfga/openfga/releases/tag/v1.13.1</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-33729">https://nvd.nist.gov/vuln/detail/CVE-2026-33729</a></li>
 <li><a href="https://github.com/advisories/GHSA-h6c8-cww8-35hf">https://github.com/advisories/GHSA-h6c8-cww8-35hf</a></li>
 </ul>
 ]]></content>
