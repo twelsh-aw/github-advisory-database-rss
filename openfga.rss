@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-03-30T12:47:15.817Z</updated>
+    <updated>2026-03-30T14:17:35.701Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -158,7 +158,7 @@
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
         <id>https://github.com/advisories/GHSA-c72g-53hw-82q7</id>
         <link href="https://github.com/advisories/GHSA-c72g-53hw-82q7"/>
-        <updated>2025-06-16T18:10:18.000Z</updated>
+        <updated>2026-03-30T13:56:22.000Z</updated>
         <content type="html"><![CDATA[<h3 id="overview">Overview</h3>
 <p>OpenFGA v1.8.0 to v1.8.12 ( openfga-0.2.16 &lt;= Helm chart &lt;= openfga-0.2.31, v1.8.0 &lt;= docker &lt;= v.1.8.12) are vulnerable to authorization bypass when certain Check and ListObject calls are executed.</p>
 <h3 id="am-i-affected">Am I Affected?</h3>
@@ -172,7 +172,7 @@
 <h3 id="fix">Fix</h3>
 <p>Upgrade to v1.8.13. This upgrade is backwards compatible.</p>
 <h3 id="acknowledgments">Acknowledgments</h3>
-<p>Okta would like to thank @udyvish for discovering this vulnerability.</p>
+<p>OpenFGA would like to thank @udyvish for discovering this vulnerability.</p>
 <h3 id="references">References</h3>
 <ul>
 <li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-c72g-53hw-82q7">https://github.com/openfga/openfga/security/advisories/GHSA-c72g-53hw-82q7</a></li>
