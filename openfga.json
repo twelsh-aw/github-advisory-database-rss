@@ -6,6 +6,20 @@
     "description": "Security Advisories for github.com/openfga/openfga on GitHub",
     "items": [
         {
+            "content_html": "<h3 id=\"description\">Description</h3>\n<p>In OpenFGA, under specific conditions, BatchCheck calls with multiple checks sent for the same object, relation, and user combination can result in improper policy enforcement.</p>\n<h3 id=\"am-i-affected\">Am I affected?</h3>\n<p>You are affected if you meet the following preconditions:</p>\n<ol>\n<li>You execute <strong>BatchCheck</strong> operations which rely on context. </li>\n<li>Multiple checks are sent within a single BatchCheck operation for the same user/object/relation combination, each containing context.</li>\n<li>The contexts between those checks differ in a specific way</li>\n</ol>\n<h3 id=\"fix\">Fix</h3>\n<p>Upgrade to OpenFGA v1.14.0</p>\n<h3 id=\"acknowledgement\">Acknowledgement</h3>\n<p>OpenFGA would like to thank @bugbunny-research for the discovery and detailed report.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-jwvj-g8pc-cx45\">https://github.com/openfga/openfga/security/advisories/GHSA-jwvj-g8pc-cx45</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2026-34972\">https://nvd.nist.gov/vuln/detail/CVE-2026-34972</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-jwvj-g8pc-cx45\">https://github.com/advisories/GHSA-jwvj-g8pc-cx45</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-jwvj-g8pc-cx45",
+            "title": "[github.com/openfga/openfga] OpenFGA's BatchCheck within-request deduplication produces incorrect authorization decisions via list-value cache-key collision",
+            "date_modified": "2026-04-07T18:05:16.000Z",
+            "date_published": "2026-04-07T18:05:16.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-jwvj-g8pc-cx45"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
             "content_html": "<h3 id=\"description\">Description</h3>\n<p>In OpenFGA, under specific conditions, models using conditions with caching enabled can result in two different check requests producing the same cache key. This can result in OpenFGA reusing an earlier cached result for a different request.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>Users are affected if the following preconditions are met:</p>\n<ol>\n<li>The model has relations which rely on condition evaluation.</li>\n<li>Caching is enabled.</li>\n</ol>\n<h3 id=\"fix\">Fix</h3>\n<p>Upgrade to OpenFGA v1.13.1.</p>\n<h3 id=\"acknowledgement\">Acknowledgement</h3>\n<p>OpenFGA would like to thank @Amemoyoi for the discovery and responsible disclosure.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-h6c8-cww8-35hf\">https://github.com/openfga/openfga/security/advisories/GHSA-h6c8-cww8-35hf</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/049b50ccd2cc7e163bd897f3d17a7b859ad146f8\">https://github.com/openfga/openfga/commit/049b50ccd2cc7e163bd897f3d17a7b859ad146f8</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v1.13.1\">https://github.com/openfga/openfga/releases/tag/v1.13.1</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2026-33729\">https://nvd.nist.gov/vuln/detail/CVE-2026-33729</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-h6c8-cww8-35hf\">https://github.com/advisories/GHSA-h6c8-cww8-35hf</a></li>\n</ul>\n",
             "url": "https://github.com/advisories/GHSA-h6c8-cww8-35hf",
             "title": "[github.com/openfga/openfga] OpenFGA has an Authorization Bypass through cached keys",
@@ -266,20 +280,6 @@
             "author": {
                 "name": "GitHub",
                 "url": "https://github.com/advisories/GHSA-f4mm-2r69-mg5f"
-            },
-            "tags": [
-                "severity"
-            ]
-        },
-        {
-            "content_html": "<h3 id=\"overview\">Overview</h3>\n<p>During our internal security assessment, it was discovered that <code>streamed-list-objects</code> endpoint was not validating the authorization header resulting in the disclosure of objects in the store.</p>\n<h3 id=\"am-i-affected\">Am I Affected?</h3>\n<p>You are affected by this vulnerability if you are using <code>openfga/openfga</code> version <code>v0.2.3</code> or prior and you are exposing the OpenFGA service to the internet.</p>\n<h3 id=\"how-to-fix-that\">How to fix that?</h3>\n<p>Upgrade to version <code>v0.2.4</code>.</p>\n<h3 id=\"backward-compatibility\">Backward Compatibility</h3>\n<p>This update is backward compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-95x7-mh78-7w2r\">https://github.com/openfga/openfga/security/advisories/GHSA-95x7-mh78-7w2r</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2022-39340\">https://nvd.nist.gov/vuln/detail/CVE-2022-39340</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/779d73d4b6d067ee042ec9b59fec707eed71e42f\">https://github.com/openfga/openfga/commit/779d73d4b6d067ee042ec9b59fec707eed71e42f</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v0.2.4\">https://github.com/openfga/openfga/releases/tag/v0.2.4</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-95x7-mh78-7w2r\">https://github.com/advisories/GHSA-95x7-mh78-7w2r</a></li>\n</ul>\n",
-            "url": "https://github.com/advisories/GHSA-95x7-mh78-7w2r",
-            "title": "[github.com/openfga/openfga] OpenFGA subject to Information Disclosure via streamed-list-objects endpoint",
-            "date_modified": "2023-06-27T21:55:50.000Z",
-            "date_published": "2022-10-25T20:13:38.000Z",
-            "author": {
-                "name": "GitHub",
-                "url": "https://github.com/advisories/GHSA-95x7-mh78-7w2r"
             },
             "tags": [
                 "severity"
