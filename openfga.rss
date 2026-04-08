@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-04-08T20:38:55.406Z</updated>
+    <updated>2026-04-08T22:27:34.977Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -11,6 +11,37 @@
     <category term="HIGH"/>
     <category term="MODERATE"/>
     <category term="LOW"/>
+    <entry>
+        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA: Unauthenticated playground endpoint discloses preshared API key in HTML response]]></title>
+        <id>https://github.com/advisories/GHSA-68m9-983m-f3v5</id>
+        <link href="https://github.com/advisories/GHSA-68m9-983m-f3v5"/>
+        <updated>2026-04-08T21:51:43.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="description">Description</h3>
+<p>When OpenFGA is configured to use preshared-key authentication with the built-in playground enabled, the local server includes the preshared API key in the HTML response of the /playground endpoint. The /playground endpoint is enabled by default and does not require authentication. It is intended for local development and debugging and is not designed to be exposed to production environments.</p>
+<h3 id="am-i-affected">Am I Affected?</h3>
+<p>You are affected if you meet each of the following preconditions:</p>
+<ul>
+<li>You are running OpenFGA with --authn-method preshared, and</li>
+<li>The playground is enabled, and</li>
+<li>The playground endpoint is accessible beyond localhost or trusted networks.</li>
+</ul>
+<h3 id="fix">Fix</h3>
+<p>Upgrade to OpenFGA v1.14.0, or disable the playground by running <code>./openfga run --playground-enabled=false.</code></p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-68m9-983m-f3v5">https://github.com/openfga/openfga/security/advisories/GHSA-68m9-983m-f3v5</a></li>
+<li><a href="https://github.com/openfga/openfga/releases/tag/v1.14.0">https://github.com/openfga/openfga/releases/tag/v1.14.0</a></li>
+<li><a href="https://github.com/advisories/GHSA-68m9-983m-f3v5">https://github.com/advisories/GHSA-68m9-983m-f3v5</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-68m9-983m-f3v5</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2026-04-08T21:51:41.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA's BatchCheck within-request deduplication produces incorrect authorization decisions via list-value cache-key collision]]></title>
         <id>https://github.com/advisories/GHSA-jwvj-g8pc-cx45</id>
@@ -631,36 +662,5 @@ Any tuples where the <code>user</code> field is set to a <code>userset</code>, a
         </author>
         <category label="severity" term="MODERATE"/>
         <published>2022-10-25T20:21:45.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
-        <id>https://github.com/advisories/GHSA-f4mm-2r69-mg5f</id>
-        <link href="https://github.com/advisories/GHSA-f4mm-2r69-mg5f"/>
-        <updated>2023-06-27T21:56:01.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="overview">Overview</h3>
-<p>During our internal security assessment, it was discovered that OpenFGA versions <code>v0.2.3</code> and prior are vulnerable to authorization bypass under certain conditions.</p>
-<h3 id="am-i-affected">Am I Affected?</h3>
-<p>You are affected by this vulnerability if you are using <code>openfga/openfga</code> version <code>v0.2.3</code> or prior, and your model has a relation defined as a tupleset (the right hand side of a ‘from’ statement) that involves anything other than a direct relationship (e.g. ‘as self’)</p>
-<h3 id="how-to-fix-that">How to fix that?</h3>
-<p>Upgrade to version <code>v0.2.4</code>.</p>
-<h3 id="backward-compatibility">Backward Compatibility</h3>
-<p>This update is not backward compatible.
-Any model involving rewritten tupleset relations will no longer be acceptable and has to be modified.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-f4mm-2r69-mg5f">https://github.com/openfga/openfga/security/advisories/GHSA-f4mm-2r69-mg5f</a></li>
-<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-39342">https://nvd.nist.gov/vuln/detail/CVE-2022-39342</a></li>
-<li><a href="https://github.com/openfga/openfga/commit/c8db1ee3d2a366f18e585dd33236340e76e784c4">https://github.com/openfga/openfga/commit/c8db1ee3d2a366f18e585dd33236340e76e784c4</a></li>
-<li><a href="https://github.com/openfga/openfga/releases/tag/v0.2.4">https://github.com/openfga/openfga/releases/tag/v0.2.4</a></li>
-<li><a href="https://github.com/advisories/GHSA-f4mm-2r69-mg5f">https://github.com/advisories/GHSA-f4mm-2r69-mg5f</a></li>
-</ul>
-]]></content>
-        <author>
-            <name>GitHub</name>
-            <email>GitHub@noreply.github.com</email>
-            <uri>https://github.com/advisories/GHSA-f4mm-2r69-mg5f</uri>
-        </author>
-        <category label="severity" term="MODERATE"/>
-        <published>2022-10-25T20:21:33.000Z</published>
     </entry>
 </feed>
