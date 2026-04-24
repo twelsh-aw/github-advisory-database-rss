@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-04-24T20:33:32.092Z</updated>
+    <updated>2026-04-24T21:36:46.001Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -48,7 +48,7 @@
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA: Unauthenticated playground endpoint discloses preshared API key in HTML response]]></title>
         <id>https://github.com/advisories/GHSA-68m9-983m-f3v5</id>
         <link href="https://github.com/advisories/GHSA-68m9-983m-f3v5"/>
-        <updated>2026-04-14T21:54:52.000Z</updated>
+        <updated>2026-04-24T20:48:26.000Z</updated>
         <content type="html"><![CDATA[<h3 id="description">Description</h3>
 <p>When OpenFGA is configured to use preshared-key authentication with the built-in playground enabled, the local server includes the preshared API key in the HTML response of the /playground endpoint. The /playground endpoint is enabled by default and does not require authentication. It is intended for local development and debugging and is not designed to be exposed to production environments.</p>
 <h3 id="am-i-affected">Am I Affected?</h3>
@@ -64,6 +64,7 @@
 <ul>
 <li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-68m9-983m-f3v5">https://github.com/openfga/openfga/security/advisories/GHSA-68m9-983m-f3v5</a></li>
 <li><a href="https://github.com/openfga/openfga/releases/tag/v1.14.0">https://github.com/openfga/openfga/releases/tag/v1.14.0</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40293">https://nvd.nist.gov/vuln/detail/CVE-2026-40293</a></li>
 <li><a href="https://github.com/advisories/GHSA-68m9-983m-f3v5">https://github.com/advisories/GHSA-68m9-983m-f3v5</a></li>
 </ul>
 ]]></content>
