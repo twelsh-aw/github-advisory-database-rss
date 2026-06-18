@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-06-18T14:39:01.584Z</updated>
+    <updated>2026-06-18T17:51:42.637Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -11,6 +11,37 @@
     <category term="HIGH"/>
     <category term="MODERATE"/>
     <category term="LOW"/>
+    <entry>
+        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Improper Policy Enforcement]]></title>
+        <id>https://github.com/advisories/GHSA-cf98-j28v-49v6</id>
+        <link href="https://github.com/advisories/GHSA-cf98-j28v-49v6"/>
+        <updated>2026-06-18T15:05:32.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="description">Description</h2>
+<p>In OpenFGA, when MySQL is being used as the datastore, two distinct check requests can return the same response.</p>
+<h2 id="preconditions">Preconditions</h2>
+<p>This applies if the following preconditions are met:</p>
+<ol>
+<li>You run OpenFGA with MySQL as the datastore</li>
+<li>Your authorization decisions rely on case-sensitive user strings.</li>
+</ol>
+<h2 id="fix">Fix</h2>
+<p>Upgrade to OpenFGA 1.18.0 or greater.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>OpenFGA would like to thank @sahajamoth for the detailed report.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-cf98-j28v-49v6">https://github.com/openfga/openfga/security/advisories/GHSA-cf98-j28v-49v6</a></li>
+<li><a href="https://github.com/advisories/GHSA-cf98-j28v-49v6">https://github.com/advisories/GHSA-cf98-j28v-49v6</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-cf98-j28v-49v6</uri>
+        </author>
+        <category label="severity" term="LOW"/>
+        <published>2026-06-18T15:05:30.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA has cache-key delimiter injection in shared-iterator and v2 iterator that caches enables intra-store authorization-decision poisoning]]></title>
         <id>https://github.com/advisories/GHSA-8396-jffm-qx4w</id>
@@ -631,42 +662,5 @@ type group
         </author>
         <category label="severity" term="MODERATE"/>
         <published>2023-06-28T22:49:49.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
-        <id>https://github.com/advisories/GHSA-m3q4-7qmj-657m</id>
-        <link href="https://github.com/advisories/GHSA-m3q4-7qmj-657m"/>
-        <updated>2023-01-29T05:01:07.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="overview">Overview</h3>
-<p>During our internal security assessment, it was discovered that OpenFGA versions v0.3.0 is vulnerable to authorization bypass under certain conditions.</p>
-<h3 id="am-i-affected">Am I Affected?</h3>
-<p>You are affected by this vulnerability if <strong>all</strong> of the following applies:</p>
-<ol>
-<li>You are using OpenFGA v0.3.0</li>
-<li>You created a model using modeling language v1.1 that applies a type restriction to an object e.g. <code>define viewer: [user]</code></li>
-<li>You created tuples based on the aforementioned model, e.g. <code>document:1#viewer@user:jon</code></li>
-<li>You updated the previous model by adding a new type and replacing the previous restriction with the newly added type e.g. <code>define viewer: [employee]</code></li>
-<li>You use the tuples created against the first model (step 3) and issue checks against the updated model e.g. <code>user=user:jon, relation=viewer, object:document:1</code></li>
-</ol>
-<h3 id="how-to-fix-that">How to fix that?</h3>
-<p>Upgrade to version v0.3.1</p>
-<h3 id="backward-compatibility">Backward Compatibility</h3>
-<p>This update is backward compatible.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-m3q4-7qmj-657m">https://github.com/openfga/openfga/security/advisories/GHSA-m3q4-7qmj-657m</a></li>
-<li><a href="https://github.com/openfga/openfga/pull/422">https://github.com/openfga/openfga/pull/422</a></li>
-<li><a href="https://github.com/openfga/openfga/releases/tag/v0.3.1">https://github.com/openfga/openfga/releases/tag/v0.3.1</a></li>
-<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-23542">https://nvd.nist.gov/vuln/detail/CVE-2022-23542</a></li>
-<li><a href="https://github.com/advisories/GHSA-m3q4-7qmj-657m">https://github.com/advisories/GHSA-m3q4-7qmj-657m</a></li>
-</ul>
-]]></content>
-        <author>
-            <name>GitHub</name>
-            <email>GitHub@noreply.github.com</email>
-            <uri>https://github.com/advisories/GHSA-m3q4-7qmj-657m</uri>
-        </author>
-        <category label="severity" term="HIGH"/>
-        <published>2022-12-20T19:33:27.000Z</published>
     </entry>
 </feed>
