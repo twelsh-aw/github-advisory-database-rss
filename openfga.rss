@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-06-19T11:10:25.556Z</updated>
+    <updated>2026-06-19T14:36:27.879Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -11,6 +11,42 @@
     <category term="HIGH"/>
     <category term="MODERATE"/>
     <category term="LOW"/>
+    <entry>
+        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA: OIDC audience validation skipped when --authn-oidc-audience is unset]]></title>
+        <id>https://github.com/advisories/GHSA-hcxc-wf8j-23hv</id>
+        <link href="https://github.com/advisories/GHSA-hcxc-wf8j-23hv"/>
+        <updated>2026-06-19T14:35:36.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="description">Description</h2>
+<p>OpenFGA's OIDC authenticator skipped JWT audience (<code>aud</code>) validation when no audience was configured.
+In deployments where one identity provider issues tokens for multiple services,
+a token minted for an unrelated service could authenticate to OpenFGA.</p>
+<h2 id="preconditions">Preconditions</h2>
+<p>This applies if the following preconditions are met:</p>
+<ol>
+<li>You run OpenFGA with <code>authn.method</code> set to <code>oidc</code>.</li>
+<li>You configured <code>authn.oidc.issuer</code> but did <strong>not</strong> set
+<code>authn.oidc.audience</code> (<code>--authn-oidc-audience</code> / <code>OPENFGA_AUTHN_OIDC_AUDIENCE</code>).</li>
+</ol>
+<h2 id="fix">Fix</h2>
+<p>Upgrade to OpenFGA 1.18.0 or greater. OpenFGA now refuses to start in <code>oidc</code>
+mode unless both <code>authn.oidc.issuer</code> and <code>authn.oidc.audience</code> are set, and the
+<code>aud</code> claim is always validated.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>OpenFGA would like to thank <a href="https://github.com/0xVijay">https://github.com/0xVijay</a> for the report.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-hcxc-wf8j-23hv">https://github.com/openfga/openfga/security/advisories/GHSA-hcxc-wf8j-23hv</a></li>
+<li><a href="https://github.com/advisories/GHSA-hcxc-wf8j-23hv">https://github.com/advisories/GHSA-hcxc-wf8j-23hv</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-hcxc-wf8j-23hv</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2026-06-19T14:35:35.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Improper Policy Enforcement]]></title>
         <id>https://github.com/advisories/GHSA-cf98-j28v-49v6</id>
@@ -627,40 +663,5 @@ type group
         </author>
         <category label="severity" term="MODERATE"/>
         <published>2023-08-25T19:45:57.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA vulnerable to denial of service due to circular relationship]]></title>
-        <id>https://github.com/advisories/GHSA-hr9r-8phq-5x8j</id>
-        <link href="https://github.com/advisories/GHSA-hr9r-8phq-5x8j"/>
-        <updated>2023-11-07T05:01:25.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="overview">Overview</h3>
-<p>OpenFGA versions v1.1.0 and prior are vulnerable to a DoS attack when certain Check and ListObjects calls are executed against authorization models that contain circular relationship definitions.</p>
-<h3 id="am-i-affected">Am I Affected?</h3>
-<p>You are affected by this vulnerability if you are using OpenFGA v1.1.0 or earlier, and if you are executing certain <a href="https://openfga.dev/api/service#/Relationship%20Queries/Check">Check</a> or <a href="https://openfga.dev/api/service#/Relationship%20Queries/ListObjects">ListObjects</a> calls against a vulnerable authorization model. To see which of your models could be vulnerable to this attack, download OpenFGA v1.2.0 and run the following command: </p>
-<pre><code>./openfga validate-models --datastore-engine &lt;ENGINE&gt; --datastore-uri &lt;URI&gt; | jq .[] | select(.Error | contains("loop"))
-</code></pre>
-<p>replacing the variables <code>&lt;ENGINE&gt;</code> and <code>&lt;URI&gt;</code> as needed.</p>
-<h3 id="fix">Fix</h3>
-<p>Upgrade to v1.1.1.</p>
-<h3 id="backward-compatibility">Backward Compatibility</h3>
-<p>If you are not passing an invalid authorization model (as identified by running <code>./openfga validate-models</code>) as a parameter of your Check and ListObjects calls, this upgrade is backwards compatible. </p>
-<p>Otherwise, OpenFGA v1.1.1 will start returning HTTP 400 status codes on those calls.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-hr9r-8phq-5x8j">https://github.com/openfga/openfga/security/advisories/GHSA-hr9r-8phq-5x8j</a></li>
-<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-35933">https://nvd.nist.gov/vuln/detail/CVE-2023-35933</a></li>
-<li><a href="https://github.com/openfga/openfga/commit/087ce392595f3c319ab3028b5089118ea4063452">https://github.com/openfga/openfga/commit/087ce392595f3c319ab3028b5089118ea4063452</a></li>
-<li><a href="https://openfga.dev/api/service#/Relationship%20Queries/Check">https://openfga.dev/api/service#/Relationship%20Queries/Check</a></li>
-<li><a href="https://openfga.dev/api/service#/Relationship%20Queries/ListObjects">https://openfga.dev/api/service#/Relationship%20Queries/ListObjects</a></li>
-<li><a href="https://github.com/advisories/GHSA-hr9r-8phq-5x8j">https://github.com/advisories/GHSA-hr9r-8phq-5x8j</a></li>
-</ul>
-]]></content>
-        <author>
-            <name>GitHub</name>
-            <email>GitHub@noreply.github.com</email>
-            <uri>https://github.com/advisories/GHSA-hr9r-8phq-5x8j</uri>
-        </author>
-        <category label="severity" term="MODERATE"/>
-        <published>2023-06-28T22:49:49.000Z</published>
     </entry>
 </feed>
