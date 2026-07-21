@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-07-21T12:16:48.008Z</updated>
+    <updated>2026-07-21T14:52:14.008Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -51,7 +51,7 @@ mode unless both <code>authn.oidc.issuer</code> and <code>authn.oidc.audience</c
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Improper Policy Enforcement]]></title>
         <id>https://github.com/advisories/GHSA-cf98-j28v-49v6</id>
         <link href="https://github.com/advisories/GHSA-cf98-j28v-49v6"/>
-        <updated>2026-06-18T15:05:32.000Z</updated>
+        <updated>2026-07-21T13:59:40.000Z</updated>
         <content type="html"><![CDATA[<h2 id="description">Description</h2>
 <p>In OpenFGA, when MySQL is being used as the datastore, two distinct check requests can return the same response.</p>
 <h2 id="preconditions">Preconditions</h2>
@@ -67,6 +67,11 @@ mode unless both <code>authn.oidc.issuer</code> and <code>authn.oidc.audience</c
 <h3 id="references">References</h3>
 <ul>
 <li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-cf98-j28v-49v6">https://github.com/openfga/openfga/security/advisories/GHSA-cf98-j28v-49v6</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-55170">https://nvd.nist.gov/vuln/detail/CVE-2026-55170</a></li>
+<li><a href="https://github.com/openfga/helm-charts/commit/96d5517a2693ff5def451dee7d6b9d1baeb281f8">https://github.com/openfga/helm-charts/commit/96d5517a2693ff5def451dee7d6b9d1baeb281f8</a></li>
+<li><a href="https://github.com/openfga/openfga/commit/a2e0dbefc3e01a95c785f81a3563bc6571b08b11">https://github.com/openfga/openfga/commit/a2e0dbefc3e01a95c785f81a3563bc6571b08b11</a></li>
+<li><a href="https://github.com/openfga/helm-charts/releases/tag/openfga-0.3.9">https://github.com/openfga/helm-charts/releases/tag/openfga-0.3.9</a></li>
+<li><a href="https://github.com/openfga/openfga/releases/tag/v1.18.0">https://github.com/openfga/openfga/releases/tag/v1.18.0</a></li>
 <li><a href="https://github.com/advisories/GHSA-cf98-j28v-49v6">https://github.com/advisories/GHSA-cf98-j28v-49v6</a></li>
 </ul>
 ]]></content>
