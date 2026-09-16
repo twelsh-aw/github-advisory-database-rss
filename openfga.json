@@ -6,6 +6,20 @@
     "description": "Security Advisories for github.com/openfga/openfga on GitHub",
     "items": [
         {
+            "content_html": "<h3 id=\"description\">Description</h3>\n<p>In OpenFGA, the ListUsers API could incorrectly return a user who should have been excluded.</p>\n<h3 id=\"preconditions\">Preconditions</h3>\n<p>This applies if all of the following are present:</p>\n<ul>\n<li>The authorization model contains a relation defined as an intersection (and) where at least one operand is an exclusion of the form base but not excluded: e.g. <code>rel1: (public_user but not blocked) and rel2</code></li>\n<li>The base side of that exclusion is granted through a type-bound public wildcard (e.g. user:*).</li>\n<li>A user excluded by the but not clause is also granted, via a concrete tuple, through another operand of the intersection.</li>\n<li>Your application uses ListUsers to enumerate or enforce access</li>\n</ul>\n<h3 id=\"fix\">Fix</h3>\n<p>Upgrade to OpenFGA v1.18.1 or greater.</p>\n<h3 id=\"acknowledgements\">Acknowledgements</h3>\n<p>OpenFGA would like to thank @5ud0er for the detailed report.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-g3pg-frfm-pr2m\">https://github.com/openfga/openfga/security/advisories/GHSA-g3pg-frfm-pr2m</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2026-61709\">https://nvd.nist.gov/vuln/detail/CVE-2026-61709</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/171806c93b86bca29e0212ceb8b6ee9c48eb9ac3\">https://github.com/openfga/openfga/commit/171806c93b86bca29e0212ceb8b6ee9c48eb9ac3</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v1.18.1\">https://github.com/openfga/openfga/releases/tag/v1.18.1</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-g3pg-frfm-pr2m\">https://github.com/advisories/GHSA-g3pg-frfm-pr2m</a></li>\n</ul>\n",
+            "url": "https://github.com/advisories/GHSA-g3pg-frfm-pr2m",
+            "title": "[github.com/openfga/openfga] OpenFGA: ListUsers returns a deliberately-excluded user when a `but not` exclusion under a type-bound wildcard is intersected (`and`) with another relation that also grants that user",
+            "date_modified": "2026-09-16T22:15:10.000Z",
+            "date_published": "2026-09-16T22:15:09.000Z",
+            "author": {
+                "name": "GitHub",
+                "url": "https://github.com/advisories/GHSA-g3pg-frfm-pr2m"
+            },
+            "tags": [
+                "severity"
+            ]
+        },
+        {
             "content_html": "<h2 id=\"description\">Description</h2>\n<p>OpenFGA's OIDC authenticator skipped JWT audience (<code>aud</code>) validation when no audience was configured.\nIn deployments where one identity provider issues tokens for multiple services,\na token minted for an unrelated service could authenticate to OpenFGA.</p>\n<h2 id=\"preconditions\">Preconditions</h2>\n<p>This applies if the following preconditions are met:</p>\n<ol>\n<li>You run OpenFGA with <code>authn.method</code> set to <code>oidc</code>.</li>\n<li>You configured <code>authn.oidc.issuer</code> but did <strong>not</strong> set\n<code>authn.oidc.audience</code> (<code>--authn-oidc-audience</code> / <code>OPENFGA_AUTHN_OIDC_AUDIENCE</code>).</li>\n</ol>\n<h2 id=\"fix\">Fix</h2>\n<p>Upgrade to OpenFGA 1.18.0 or greater. OpenFGA now refuses to start in <code>oidc</code>\nmode unless both <code>authn.oidc.issuer</code> and <code>authn.oidc.audience</code> are set, and the\n<code>aud</code> claim is always validated.</p>\n<h2 id=\"acknowledgements\">Acknowledgements</h2>\n<p>OpenFGA would like to thank <a href=\"https://github.com/0xVijay\">https://github.com/0xVijay</a> for the report.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-hcxc-wf8j-23hv\">https://github.com/openfga/openfga/security/advisories/GHSA-hcxc-wf8j-23hv</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2026-55689\">https://nvd.nist.gov/vuln/detail/CVE-2026-55689</a></li>\n<li><a href=\"https://github.com/openfga/openfga/commit/44596773b2e62738720ef215bf7fa04352954271\">https://github.com/openfga/openfga/commit/44596773b2e62738720ef215bf7fa04352954271</a></li>\n<li><a href=\"https://github.com/openfga/helm-ch\">https://github.com/openfga/helm-ch</a></li>\n<li><a href=\"https://github.com/openfga/helm-charts/releases/tag/openfga-0.3.9\">https://github.com/openfga/helm-charts/releases/tag/openfga-0.3.9</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v1.18.0\">https://github.com/openfga/openfga/releases/tag/v1.18.0</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-hcxc-wf8j-23hv\">https://github.com/advisories/GHSA-hcxc-wf8j-23hv</a></li>\n</ul>\n",
             "url": "https://github.com/advisories/GHSA-hcxc-wf8j-23hv",
             "title": "[github.com/openfga/openfga] OpenFGA: OIDC audience validation skipped when --authn-oidc-audience is unset",
@@ -266,20 +280,6 @@
             "author": {
                 "name": "GitHub",
                 "url": "https://github.com/advisories/GHSA-2hm9-h873-pgqh"
-            },
-            "tags": [
-                "severity"
-            ]
-        },
-        {
-            "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>Some end users of OpenFGA v1.3.0 or earlier are vulnerable to authorization bypass when calling the ListObjects API. This means that the API sometimes returns more objects than it should.</p>\n<h2 id=\"am-i-affected\">Am I Affected?</h2>\n<p>The vulnerability affects customers using ListObjects with specific models. The affected models contain expressions of type <code>rel1 from type1</code>.</p>\n<h2 id=\"fix\">Fix</h2>\n<p>Update to v1.3.1.</p>\n<h2 id=\"backward-compatibility\">Backward Compatibility</h2>\n<p>This update is backward compatible.</p>\n<h3 id=\"references\">References</h3>\n<ul>\n<li><a href=\"https://github.com/openfga/openfga/security/advisories/GHSA-jcf2-mxr2-gmqp\">https://github.com/openfga/openfga/security/advisories/GHSA-jcf2-mxr2-gmqp</a></li>\n<li><a href=\"https://github.com/openfga/openfga/releases/tag/v1.3.1\">https://github.com/openfga/openfga/releases/tag/v1.3.1</a></li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2023-40579\">https://nvd.nist.gov/vuln/detail/CVE-2023-40579</a></li>\n<li><a href=\"https://github.com/advisories/GHSA-jcf2-mxr2-gmqp\">https://github.com/advisories/GHSA-jcf2-mxr2-gmqp</a></li>\n</ul>\n",
-            "url": "https://github.com/advisories/GHSA-jcf2-mxr2-gmqp",
-            "title": "[github.com/openfga/openfga] OpenFGA Authorization Bypass",
-            "date_modified": "2024-05-10T14:24:59.000Z",
-            "date_published": "2023-08-25T19:45:57.000Z",
-            "author": {
-                "name": "GitHub",
-                "url": "https://github.com/advisories/GHSA-jcf2-mxr2-gmqp"
             },
             "tags": [
                 "severity"

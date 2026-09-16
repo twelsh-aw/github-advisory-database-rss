@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://twelsh-aw.github.io/github-advisory-database-rss/openfga.rss</id>
     <title>Security Advisories for github.com/openfga/openfga</title>
-    <updated>2026-09-16T20:31:50.023Z</updated>
+    <updated>2026-09-16T23:19:28.786Z</updated>
     <generator>github-advisory-database-rss</generator>
     <link rel="alternate" href="https://github.com/advisories?query=type%3Areviewed+ecosystem%3Ago+affects%3Agithub.com/openfga/openfga"/>
     <subtitle>Security Advisories for github.com/openfga/openfga on GitHub</subtitle>
@@ -11,6 +11,42 @@
     <category term="HIGH"/>
     <category term="MODERATE"/>
     <category term="LOW"/>
+    <entry>
+        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA: ListUsers returns a deliberately-excluded user when a `but not` exclusion under a type-bound wildcard is intersected (`and`) with another relation that also grants that user]]></title>
+        <id>https://github.com/advisories/GHSA-g3pg-frfm-pr2m</id>
+        <link href="https://github.com/advisories/GHSA-g3pg-frfm-pr2m"/>
+        <updated>2026-09-16T22:15:10.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="description">Description</h3>
+<p>In OpenFGA, the ListUsers API could incorrectly return a user who should have been excluded.</p>
+<h3 id="preconditions">Preconditions</h3>
+<p>This applies if all of the following are present:</p>
+<ul>
+<li>The authorization model contains a relation defined as an intersection (and) where at least one operand is an exclusion of the form base but not excluded: e.g. <code>rel1: (public_user but not blocked) and rel2</code></li>
+<li>The base side of that exclusion is granted through a type-bound public wildcard (e.g. user:*).</li>
+<li>A user excluded by the but not clause is also granted, via a concrete tuple, through another operand of the intersection.</li>
+<li>Your application uses ListUsers to enumerate or enforce access</li>
+</ul>
+<h3 id="fix">Fix</h3>
+<p>Upgrade to OpenFGA v1.18.1 or greater.</p>
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>OpenFGA would like to thank @5ud0er for the detailed report.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-g3pg-frfm-pr2m">https://github.com/openfga/openfga/security/advisories/GHSA-g3pg-frfm-pr2m</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-61709">https://nvd.nist.gov/vuln/detail/CVE-2026-61709</a></li>
+<li><a href="https://github.com/openfga/openfga/commit/171806c93b86bca29e0212ceb8b6ee9c48eb9ac3">https://github.com/openfga/openfga/commit/171806c93b86bca29e0212ceb8b6ee9c48eb9ac3</a></li>
+<li><a href="https://github.com/openfga/openfga/releases/tag/v1.18.1">https://github.com/openfga/openfga/releases/tag/v1.18.1</a></li>
+<li><a href="https://github.com/advisories/GHSA-g3pg-frfm-pr2m">https://github.com/advisories/GHSA-g3pg-frfm-pr2m</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>GitHub</name>
+            <email>GitHub@noreply.github.com</email>
+            <uri>https://github.com/advisories/GHSA-g3pg-frfm-pr2m</uri>
+        </author>
+        <category label="severity" term="MODERATE"/>
+        <published>2026-09-16T22:15:09.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA: OIDC audience validation skipped when --authn-oidc-audience is unset]]></title>
         <id>https://github.com/advisories/GHSA-hcxc-wf8j-23hv</id>
@@ -644,34 +680,5 @@ type group
         </author>
         <category label="severity" term="MODERATE"/>
         <published>2023-09-28T21:27:04.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[github.com/openfga/openfga] OpenFGA Authorization Bypass]]></title>
-        <id>https://github.com/advisories/GHSA-jcf2-mxr2-gmqp</id>
-        <link href="https://github.com/advisories/GHSA-jcf2-mxr2-gmqp"/>
-        <updated>2024-05-10T14:24:59.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
-<p>Some end users of OpenFGA v1.3.0 or earlier are vulnerable to authorization bypass when calling the ListObjects API. This means that the API sometimes returns more objects than it should.</p>
-<h2 id="am-i-affected">Am I Affected?</h2>
-<p>The vulnerability affects customers using ListObjects with specific models. The affected models contain expressions of type <code>rel1 from type1</code>.</p>
-<h2 id="fix">Fix</h2>
-<p>Update to v1.3.1.</p>
-<h2 id="backward-compatibility">Backward Compatibility</h2>
-<p>This update is backward compatible.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="https://github.com/openfga/openfga/security/advisories/GHSA-jcf2-mxr2-gmqp">https://github.com/openfga/openfga/security/advisories/GHSA-jcf2-mxr2-gmqp</a></li>
-<li><a href="https://github.com/openfga/openfga/releases/tag/v1.3.1">https://github.com/openfga/openfga/releases/tag/v1.3.1</a></li>
-<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-40579">https://nvd.nist.gov/vuln/detail/CVE-2023-40579</a></li>
-<li><a href="https://github.com/advisories/GHSA-jcf2-mxr2-gmqp">https://github.com/advisories/GHSA-jcf2-mxr2-gmqp</a></li>
-</ul>
-]]></content>
-        <author>
-            <name>GitHub</name>
-            <email>GitHub@noreply.github.com</email>
-            <uri>https://github.com/advisories/GHSA-jcf2-mxr2-gmqp</uri>
-        </author>
-        <category label="severity" term="MODERATE"/>
-        <published>2023-08-25T19:45:57.000Z</published>
     </entry>
 </feed>
